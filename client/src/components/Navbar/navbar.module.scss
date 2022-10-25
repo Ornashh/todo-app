@@ -1,0 +1,51 @@
+@import "../../assets/styles/variables";
+
+.navbar_outer {
+  background-color: $background_color;
+  border-bottom: 1px solid $border_color;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 5;
+}
+
+.navbar_inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding: 0 20px;
+}
+
+.menu {
+  height: 30px;
+
+  svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 500;
+  color: #fff;
+  transition: color .3s ease;
+
+  &:hover {
+    color: $primary_color;
+  }
+}
+
+.signIn_link {
+  font-size: 18px;
+  transition: color .3s ease;
+
+  &:hover {
+    color: $primary_color;
+  }
+}

@@ -1,0 +1,38 @@
+@import "../../assets/styles/variables";
+
+.button {
+  font-size: 16px;
+  color: #fff;
+  background-color: $primary_color;
+  border-radius: 4px;
+  text-transform: uppercase;
+  min-width: 70px;
+  height: 40px;
+  padding: 0 15px;
+  transition: .3s ease;
+
+  &:hover {
+    background-color: $hover;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.secondary_color {
+  background-color: #424242;
+
+  &:hover {
+    background-color: #4d4d4d;
+  }
+}
+
+.full_width {
+  width: 100%;
+}
+
+.button_small {
+  height: 35px;
+  padding: 0 10px;
+}

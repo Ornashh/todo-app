@@ -1,0 +1,45 @@
+@import "../../assets/styles/variables";
+
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 51px);
+
+  h1 {
+    font-size: clamp(40px, 9vw, 100px);
+    font-weight: 500;
+    line-height: 1.1;
+    text-align: center;
+    text-transform: uppercase;
+
+    @media (max-width: 768px) {
+      text-align: left;
+    }
+
+    div:first-child {
+      animation: fadeIn 3s forwards;
+      animation-delay: 0.5s;
+      opacity: 0;
+    }
+
+    div:nth-child(2) {
+      animation: fadeIn 3s forwards;
+      animation-delay: 1s;
+      opacity: 0;
+    }
+
+    span {
+      color: $primary_color;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
