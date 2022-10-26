@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import "../../assets/styles/auth.scss";
 
 import { signIn } from "../../api";
+import PageLayout from "../../components/PageLayout";
 import Textfield from "../../ui/Textfield";
 import Button from "../../ui/Button";
 import { signInSchemas } from "../../utils/schemas";
@@ -36,44 +37,46 @@ const SignIn = () => {
     });
 
   return (
-    <div className="auth_outer">
-      <div className="auth_inner">
-        <h1 className="auth_title">Sign in</h1>
-        <form className="auth_body" onSubmit={handleSubmit}>
-          <Textfield
-            name="username"
-            label="Username"
-            requiredMark
-            disabled={isSubmitting}
-            value={values.username.trim()}
-            handleChange={handleChange}
-            errors={errors.username}
-          />
-          <Textfield
-            name="password"
-            type="password"
-            label="Password"
-            requiredMark
-            disabled={isSubmitting}
-            value={values.password.trim()}
-            handleChange={handleChange}
-            errors={errors.password}
-          />
-          <Button
-            type="submit"
-            fullWidth
-            onClick={handleSubmit}
-            disabled={isSubmitting}
-          >
-            Sign in
-          </Button>
-        </form>
-        <div className="auth_footer">
-          <h6>Don't have an account?</h6>
-          <Link to="/sign_up">Sign up</Link>
+    <PageLayout title="Sign in">
+      <div className="auth_outer">
+        <div className="auth_inner">
+          <h1 className="auth_title">Sign in</h1>
+          <form className="auth_body" onSubmit={handleSubmit}>
+            <Textfield
+              name="username"
+              label="Username"
+              requiredMark
+              disabled={isSubmitting}
+              value={values.username.trim()}
+              handleChange={handleChange}
+              errors={errors.username}
+            />
+            <Textfield
+              name="password"
+              type="password"
+              label="Password"
+              requiredMark
+              disabled={isSubmitting}
+              value={values.password.trim()}
+              handleChange={handleChange}
+              errors={errors.password}
+            />
+            <Button
+              type="submit"
+              fullWidth
+              onClick={handleSubmit}
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Loading..." : "Sign in"}
+            </Button>
+          </form>
+          <div className="auth_footer">
+            <h6>Don't have an account?</h6>
+            <Link to="/sign_up">Sign up</Link>
+          </div>
         </div>
       </div>
-    </div>
+    </PageLayout>
   );
 };
 

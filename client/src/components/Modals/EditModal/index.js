@@ -49,6 +49,11 @@ const EditModal = () => {
     desc: data.desc,
   };
 
+  const disabledButton =
+    isLoading ||
+    !updateState.title ||
+    _.isEqual(cloneDataForCompare, updateState);
+
   return (
     <div>
       <form className={s.form} onSubmit={handleSubmit}>
@@ -70,14 +75,7 @@ const EditModal = () => {
           <Button secondary onClick={closeModal}>
             Cancel
           </Button>
-          <Button
-            type="submit"
-            disabled={
-              isLoading ||
-              !updateState.title ||
-              _.isEqual(cloneDataForCompare, updateState)
-            }
-          >
+          <Button type="submit" disabled={disabledButton}>
             {isLoading ? "Loading..." : "Save"}
           </Button>
         </div>

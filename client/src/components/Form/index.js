@@ -9,7 +9,7 @@ import settings from "../../utils/toastSettings";
 
 const Form = ({ setTasks }) => {
   const [state, setState] = useState({ title: "" });
-  const [isDisableForm, setIsDisableForm] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
     setState({ [e.target.name]: e.target.value });
@@ -19,18 +19,17 @@ const Form = ({ setTasks }) => {
     e.preventDefault();
 
     if (state.title) {
-      setIsDisableForm(true);
+      setIsLoading(true);
       createTask(state)
         .then((res) => {
           setTasks(res.data.todos);
-          toast.success("Task added", settings);
           setState({ title: "" });
         })
         .catch((error) => {
           console.log(error);
         })
         .finally(() => {
-          setIsDisableForm(false);
+          setIsLoading(false);
         });
     } else {
       toast.info("Enter a task", settings);
@@ -41,7 +40,7 @@ const Form = ({ setTasks }) => {
     <form className={s.form} onSubmit={handleAddTask}>
       <button
         type="submit"
-        disabled={isDisableForm}
+        disabled={isLoading}
         className={s.icon_button}
         onClick={handleAddTask}
       >
@@ -50,7 +49,7 @@ const Form = ({ setTasks }) => {
       <input
         name="title"
         type="text"
-        disabled={isDisableForm}
+        disabled={isLoading}
         placeholder="Add task"
         value={state.title || ""}
         onChange={handleChange}

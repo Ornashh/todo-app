@@ -5,6 +5,7 @@ import s from "./tasks.module.scss";
 
 import { useAppContext } from "../../context";
 import { getTasks } from "../../api";
+import PageLayout from "../../components/PageLayout";
 import Form from "../../components/Form";
 import Task from "../../components/Task";
 import Loader from "../../ui/Loader";
@@ -20,7 +21,7 @@ const Tasks = () => {
     month: "short",
     day: "numeric",
   };
-  const currentDate = new Date();
+  const currentDate = new Date().toLocaleDateString("en-US", options);
 
   useEffect(() => {
     setIsLoading(true);
@@ -37,33 +38,35 @@ const Tasks = () => {
   }, []);
 
   return (
-    <div className={s.wrapper}>
-      <div
-        className={clsx(s.layout, { [s.show_layout]: isOpenMenu })}
-        onClick={handleToggleMenu}
-      />
-      <div className={clsx(s.sidebar, { [s.toggle_menu]: isOpenMenu })}>
-        <div className={s.sidebar_inner}>
-          <button>Tasks</button>
-        </div>
-      </div>
-      <div className={s.content}>
-        <div className={s.header}>
-          <div className={s.header_date}>
-            <h2>Today</h2>
-            <p>{currentDate.toLocaleDateString("en-US", options)}</p>
+    <PageLayout title="Tasks">
+      <div className={s.wrapper}>
+        <div
+          className={clsx(s.layout, { [s.show_layout]: isOpenMenu })}
+          onClick={handleToggleMenu}
+        />
+        <div className={clsx(s.sidebar, { [s.toggle_menu]: isOpenMenu })}>
+          <div className={s.sidebar_inner}>
+            <button>Tasks</button>
           </div>
         </div>
-        <Form setTasks={setTasks} />
-        <Loader loading={isLoading}>
-          <div>
-            {tasks.map((task) => {
-              return <Task key={task._id} {...task} setTasks={setTasks} />;
-            })}
+        <div className={s.content}>
+          <div className={s.header}>
+            <div className={s.header_date}>
+              <h2>Today</h2>
+              <p>{currentDate}</p>
+            </div>
           </div>
-        </Loader>
+          <Form setTasks={setTasks} />
+          <Loader loading={isLoading}>
+            <div>
+              {tasks.map((task) => {
+                return <Task key={task._id} {...task} setTasks={setTasks} />;
+              })}
+            </div>
+          </Loader>
+        </div>
       </div>
-    </div>
+    </PageLayout>
   );
 };
 

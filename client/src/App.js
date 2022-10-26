@@ -8,12 +8,13 @@ import {
 } from "react-router-dom";
 
 import { useAppContext } from "./context";
-import PrivateRoute from "./utils/privateRoute";
-import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import Tasks from "./pages/Tasks";
+import NotFound from "./pages/NotFound";
+import Navbar from "./components/Navbar";
+import PrivateRoute from "./utils/privateRoute";
 
 function App() {
   const { isAuth } = useAppContext();
@@ -34,7 +35,7 @@ function App() {
         <Route element={<PrivateRoute />}>
           <Route path="/tasks" element={<Tasks />} />
         </Route>
-        <Route path="*" element={<div>404</div>} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <ToastContainer limit={3} />
     </Router>

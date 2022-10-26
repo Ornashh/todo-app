@@ -1,11 +1,10 @@
 import axios from "axios";
-import { BASE_URL } from "../utils/constants";
 
 const instance = () => {
   const userAuth = JSON.parse(localStorage.getItem("user"));
 
   const axiosInstance = axios.create({
-    baseURL: BASE_URL,
+    baseURL: "localhost:3000",
     headers: { auth: `${userAuth?.token}` },
   });
 

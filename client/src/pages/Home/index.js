@@ -5,9 +5,9 @@ import s from "./home.module.scss";
 const Home = () => {
   return (
     <div>
-      <div className="container">
-        <div className={s.home}>
-          <h1>
+      <div className={s.home_outer}>
+        <div className={s.home_inner}>
+          <h1 className={s.title}>
             <div>
               Stay <span>organized</span> and
             </div>

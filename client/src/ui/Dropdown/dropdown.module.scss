@@ -1,18 +1,13 @@
+@import "../../assets/styles/variables";
+
 .dropdown_outer {
-  position: relative;
   display: inline-block
 }
 
 .dropdown_button {
-  background: none;
   display: flex;
   align-items: center;
   height: 100%;
-  transition: color .2s ease;
-
-  &:hover {
-    color: #1d1d1f;
-  }
 
   svg {
     width: 30px;
@@ -20,18 +15,14 @@
   }
 }
 
-.dropdown_title {
-  font-size: 14px;
-}
-
 .dropdown_inner {
-  background-color: #2a2a2a;
+  background-color: $modal_background;
   border-radius: 4px;
   display: grid;
   position: absolute;
   top: 5px;
   right: 5px;
-  z-index: 10;
+  z-index: 20;
 }
 
 .content {
@@ -45,16 +36,11 @@
   button {
     font-size: 16px;
     color: #fff;
-    background: none;
-    text-align: left;
     display: flex;
     align-items: center;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    outline: none;
+    gap: 10px;
     padding: 5px 15px;
-    transition: all .3s ease;
+    transition: background-color .3s ease;
 
     &:hover {
       background-color: #343434;
@@ -62,8 +48,14 @@
 
     svg {
       width: 18px;
+      min-width: 18px;
       height: 18px;
-      margin-right: 8px;
     }
+  }
+
+  div {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 }

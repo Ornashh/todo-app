@@ -6,10 +6,6 @@
   padding: 0;
 }
 
-html {
-  font-size: calc(14px + 0.390625vw);
-}
-
 body {
   font-family: 'Oswald', sans-serif;
   font-size: 14px;
@@ -19,7 +15,6 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: inherit;
   font-size: inherit;
   font-weight: 400;
 }
@@ -38,6 +33,7 @@ input {
 
   &:disabled {
     opacity: 0.5;
+    pointer-events: none;
   }
 }
 
@@ -61,16 +57,10 @@ button {
   z-index: 1000;
 }
 
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
 .showContent {
   animation: showAnimation .2s linear;
   position: relative;
-  z-index: 10;
+  z-index: 20;
 }
 
 @keyframes showAnimation {

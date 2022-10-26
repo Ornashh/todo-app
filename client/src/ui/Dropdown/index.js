@@ -4,6 +4,7 @@ import s from "./dropdown.module.scss";
 
 import Icon from "../../components/Icon";
 import useClickAway from "../../hooks/useClickAway";
+import RenderIf from "../../utils/renderIf";
 
 const Dropdown = ({ icon, children }) => {
   const dropdown = useRef(null);
@@ -29,7 +30,7 @@ const Dropdown = ({ icon, children }) => {
       <button className={s.dropdown_button} onClick={handleToggle}>
         <Icon name={icon ? icon : "dots"} />
       </button>
-      {isOpen ? (
+      <RenderIf isTrue={isOpen}>
         <div className={animation}>
           <div className={s.dropdown_inner}>
             <div className={s.content}>
@@ -39,7 +40,7 @@ const Dropdown = ({ icon, children }) => {
                     {cloneElement(el, {
                       onClick: async () => {
                         el.props.onClick();
-                        handleToggle();
+                        await handleToggle();
                       },
                     })}
                   </React.Fragment>
@@ -48,7 +49,7 @@ const Dropdown = ({ icon, children }) => {
             </div>
           </div>
         </div>
-      ) : null}
+      </RenderIf>
     </div>
   );
 };

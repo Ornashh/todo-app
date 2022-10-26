@@ -6,7 +6,6 @@
   width: 100%;
 
   label {
-    font-size: 14px;
     color: $label_color;
     display: flex;
     margin-bottom: 10px;
@@ -21,7 +20,7 @@
   }
 
   .not_required::after {
-    display: none;
+    content: "";
   }
 
   input {
@@ -30,11 +29,6 @@
     width: 100%;
     height: 50px;
     padding: 0 10px;
-
-    &:disabled {
-      opacity: 0.3;
-      pointer-events: none;
-    }
   }
 }
 

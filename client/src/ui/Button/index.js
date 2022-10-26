@@ -1,7 +1,7 @@
 import React from "react";
+import clsx from "clsx";
 
 import s from "./button.module.scss";
-import clsx from "clsx";
 
 const Button = (props) => {
   const {
@@ -9,7 +9,6 @@ const Button = (props) => {
     children,
     secondary,
     fullWidth,
-    small,
     disabled,
     onClick,
   } = props;
@@ -20,7 +19,6 @@ const Button = (props) => {
       className={clsx(s.button, {
         [s.secondary_color]: secondary,
         [s.full_width]: fullWidth,
-        [s.button_small]: small,
       })}
       disabled={disabled}
       onClick={onClick}

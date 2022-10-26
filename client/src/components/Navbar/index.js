@@ -1,15 +1,18 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import s from "./navbar.module.scss";
-import Icon from "../Icon";
-import Dropdown, { DropdownMenu } from "../../ui/Dropdown";
+
 import { useAppContext } from "../../context";
+import Icon from "../Icon";
+import Dropdown from "../../ui/Dropdown";
 import RenderIf from "../../utils/renderIf";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const { isAuth, handleToggleMenu } = useAppContext();
+  const location = useLocation();
+  const path = location.pathname;
 
   const handleTasks = () => {
     navigate("/tasks");
@@ -23,7 +26,7 @@ const Navbar = () => {
   return (
     <div className={s.navbar_outer}>
       <div className={s.navbar_inner}>
-        <RenderIf isTrue={isAuth}>
+        <RenderIf isTrue={isAuth && path === "/tasks"}>
           <button className={s.menu} onClick={handleToggleMenu}>
             <Icon name="menu" />
           </button>

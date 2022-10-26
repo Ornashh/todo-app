@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import "../../assets/styles/auth.scss";
 
 import { signUp } from "../../api";
+import PageLayout from "../../components/PageLayout";
 import Textfield from "../../ui/Textfield";
 import Button from "../../ui/Button";
 import settings from "../../utils/toastSettings";
@@ -41,55 +42,57 @@ const SignUp = () => {
     });
 
   return (
-    <div className="auth_outer">
-      <div className="auth_inner">
-        <h1 className="auth_title">Sign up</h1>
-        <form className="auth_body" onSubmit={handleSubmit}>
-          <div className="auth_item">
+    <PageLayout title="Sign up">
+      <div className="auth_outer">
+        <div className="auth_inner">
+          <h1 className="auth_title">Sign up</h1>
+          <form className="auth_body" onSubmit={handleSubmit}>
+            <div className="auth_item">
+              <Textfield
+                name="first_name"
+                label="First name"
+                requiredMark
+                value={values.first_name}
+                handleChange={handleChange}
+                errors={errors.first_name}
+              />
+              <Textfield
+                name="last_name"
+                label="Last name"
+                requiredMark
+                value={values.last_name}
+                handleChange={handleChange}
+                errors={errors.last_name}
+              />
+            </div>
             <Textfield
-              name="first_name"
-              label="First name"
+              name="username"
+              label="Username"
               requiredMark
-              value={values.first_name}
+              value={values.username.trim()}
               handleChange={handleChange}
-              errors={errors.first_name}
+              errors={errors.username}
             />
             <Textfield
-              name="last_name"
-              label="Last name"
+              name="password"
+              type="password"
+              label="Password"
               requiredMark
-              value={values.last_name}
+              value={values.password.trim()}
               handleChange={handleChange}
-              errors={errors.last_name}
+              errors={errors.password}
             />
+            <Button type="submit" fullWidth disabled={isSubmitting}>
+              {isSubmitting ? "Loading..." : "Sign up"}
+            </Button>
+          </form>
+          <div className="auth_footer">
+            <h6>Have an account?</h6>
+            <Link to="/sign_in">Sign in</Link>
           </div>
-          <Textfield
-            name="username"
-            label="Username"
-            requiredMark
-            value={values.username.trim()}
-            handleChange={handleChange}
-            errors={errors.username}
-          />
-          <Textfield
-            name="password"
-            type="password"
-            label="Password"
-            requiredMark
-            value={values.password.trim()}
-            handleChange={handleChange}
-            errors={errors.password}
-          />
-          <Button type="submit" fullWidth disabled={isSubmitting}>
-            Sign up
-          </Button>
-        </form>
-        <div className="auth_footer">
-          <h6>Have an account?</h6>
-          <Link to="/sign_in">Sign in</Link>
         </div>
       </div>
-    </div>
+    </PageLayout>
   );
 };
 

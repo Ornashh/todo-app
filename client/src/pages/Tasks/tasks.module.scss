@@ -7,13 +7,12 @@
 }
 
 .layout {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.7);
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 15;
   opacity: 0;
   visibility: hidden;
   transition: all .3s ease;
@@ -32,7 +31,7 @@
   z-index: 20;
 
   @media (max-width: 768px) {
-    background-color: #2a2a2a;
+    background-color: $modal_background;
     border-right: none;
     position: absolute;
     top: 0;
@@ -45,18 +44,6 @@
 
 .toggle_menu {
   transform: translateX(0);
-
-  //&::after {
-  //  content: "";
-  //  background-color: rgba(0, 0, 0, 0.5);
-  //  display: block;
-  //  position: absolute;
-  //  top: 0;
-  //  left: 0;
-  //  width: calc(100vw - 200px);
-  //  height: 100%;
-  //  margin-left: 200px;
-  //}
 }
 
 .sidebar_inner {
