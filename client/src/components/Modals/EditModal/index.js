@@ -7,7 +7,7 @@ import s from "./edit.module.scss";
 import { useAppContext } from "../../../context";
 import { updateTask } from "../../../api";
 import Button from "../../../ui/Button";
-import Textfield from "../../../ui/Textfield";
+import TextField from "../../../ui/TextField";
 import settings from "../../../utils/toastSettings";
 
 const EditModal = () => {
@@ -57,17 +57,15 @@ const EditModal = () => {
   return (
     <div>
       <form className={s.form} onSubmit={handleSubmit}>
-        <Textfield
+        <TextField
           name="title"
           label="Title"
-          variant="outlined"
           value={updateState.title}
           handleChange={handleChange}
         />
-        <Textfield
+        <TextField
           name="desc"
           label="Description"
-          variant="outlined"
           value={updateState.desc || ""}
           handleChange={handleChange}
         />

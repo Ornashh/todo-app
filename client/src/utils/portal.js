@@ -1,36 +1,18 @@
-import React, { useLayoutEffect, useState } from "react";
-import { createPortal } from "react-dom";
+import React, { useEffect, useState } from "react";
+import ReactDOM from "react-dom";
 
-const createWrapper = (id) => {
-  const wrapperElement = document.createElement("div");
-  wrapperElement.setAttribute("id", id);
-  document.body.appendChild(wrapperElement);
-  return wrapperElement;
-};
+const Portal = ({ children }) => {
+  const element = document.createElement("div");
+  element.setAttribute("id", "portal");
+  const [container] = useState(() => element);
 
-const Portal = ({ children, wrapperId }) => {
-  const [element, setElement] = useState(null);
+  useEffect(() => {
+    document.body.appendChild(container);
 
-  useLayoutEffect(() => {
-    let element = document.getElementById(wrapperId);
-    let systemCreated = false;
+    return () => document.body.removeChild(container);
+  }, []);
 
-    if (!element) {
-      systemCreated = true;
-      element = createWrapper(wrapperId);
-    }
-    setElement(element);
-
-    return () => {
-      if (systemCreated && element.parentNode) {
-        element.parentNode.removeChild(element);
-      }
-    };
-  }, [wrapperId]);
-
-  if (element === null) return null;
-
-  return createPortal(children, element);
+  return ReactDOM.createPortal(children, container);
 };
 
 export default Portal;

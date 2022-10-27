@@ -24,7 +24,7 @@
 }
 
 .sidebar {
-  border-right: 1px solid $border_color;
+  background-color: $modal_background;
   min-width: 250px;
   padding: 20px 0;
   transition: transform .3s ease;
@@ -69,6 +69,19 @@
   padding: 20px;
   transition: margin-left 0.3s ease;
   overflow: auto;
+
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: $primary_color $background_color;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $primary_color;
+    border-radius: 5px;
+  }
 }
 
 .header {

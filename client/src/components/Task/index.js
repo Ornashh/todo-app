@@ -17,7 +17,10 @@ const Task = ({ _id, title, desc, isCompleted, setTasks }) => {
     openModal({
       title: "Edit",
       type: "editModal",
-      data: { _id: _id, title: title, desc: desc || "", setTasks: setTasks },
+      data: {
+        hello: "asd",
+      },
+      // data: { _id: _id, title: title, desc: desc || "", setTasks: setTasks },
     });
   };
 

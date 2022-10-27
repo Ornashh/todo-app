@@ -4,7 +4,7 @@ import clsx from "clsx";
 import s from "./textfield.module.scss";
 import RenderIf from "../../utils/renderIf";
 
-const Textfield = (props) => {
+const TextField = (props) => {
   const {
     label,
     name,
@@ -20,7 +20,7 @@ const Textfield = (props) => {
 
   return (
     <div
-      className={clsx(s.textfield, { [s.outlined]: variant === "outlined" })}
+      className={clsx(s.textField, { [s.outlined]: variant === "outlined" })}
     >
       <RenderIf isTrue={label}>
         <label className={!requiredMark ? s.not_required : ""}>{label}</label>
@@ -42,4 +42,4 @@ const Textfield = (props) => {
   );
 };
 
-export default Textfield;
+export default TextField;

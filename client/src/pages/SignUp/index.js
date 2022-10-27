@@ -7,7 +7,7 @@ import "../../assets/styles/auth.scss";
 
 import { signUp } from "../../api";
 import PageLayout from "../../components/PageLayout";
-import Textfield from "../../ui/Textfield";
+import TextField from "../../ui/TextField";
 import Button from "../../ui/Button";
 import settings from "../../utils/toastSettings";
 import { signUpSchemas } from "../../utils/schemas";
@@ -48,7 +48,7 @@ const SignUp = () => {
           <h1 className="auth_title">Sign up</h1>
           <form className="auth_body" onSubmit={handleSubmit}>
             <div className="auth_item">
-              <Textfield
+              <TextField
                 name="first_name"
                 label="First name"
                 requiredMark
@@ -56,7 +56,7 @@ const SignUp = () => {
                 handleChange={handleChange}
                 errors={errors.first_name}
               />
-              <Textfield
+              <TextField
                 name="last_name"
                 label="Last name"
                 requiredMark
@@ -65,7 +65,7 @@ const SignUp = () => {
                 errors={errors.last_name}
               />
             </div>
-            <Textfield
+            <TextField
               name="username"
               label="Username"
               requiredMark
@@ -73,7 +73,7 @@ const SignUp = () => {
               handleChange={handleChange}
               errors={errors.username}
             />
-            <Textfield
+            <TextField
               name="password"
               type="password"
               label="Password"

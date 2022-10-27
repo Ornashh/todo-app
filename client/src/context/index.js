@@ -31,7 +31,7 @@ const AppContextProvider = ({ children }) => {
     setIsOpenMenu(!isOpenMenu);
   };
 
-  const openModal = ({ title, type, data }) => {
+  const openModal = ({ title = "", type = "", data = {} }) => {
     setModalProps({
       open: true,
       title: title,
@@ -41,7 +41,7 @@ const AppContextProvider = ({ children }) => {
   };
 
   const closeModal = () => {
-    setModalProps({ open: false });
+    setModalProps({ open: false, title: "", type: "", data: {} });
   };
 
   return (

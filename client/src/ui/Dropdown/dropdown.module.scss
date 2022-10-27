@@ -17,7 +17,7 @@
 
 .dropdown_inner {
   background-color: $modal_background;
-  border-radius: 4px;
+  border-radius: $border_radius;
   display: grid;
   position: absolute;
   top: 5px;

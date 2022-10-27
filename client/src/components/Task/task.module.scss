@@ -2,7 +2,7 @@
 
 .task {
   border: 1px solid $border_color;
-  border-radius: 4px;
+  border-radius: $border_radius;
   display: flex;
   align-items: center;
   height: 55px;

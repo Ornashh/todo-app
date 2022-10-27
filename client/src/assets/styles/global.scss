@@ -1,4 +1,4 @@
-@import "../../assets/styles/variables";
+@import "variables";
 
 * {
   box-sizing: border-box;
@@ -29,7 +29,7 @@ input {
   outline: none;
   border: none;
   background: none;
-  border-radius: 4px;
+  border-radius: $border_radius;
 
   &:disabled {
     opacity: 0.5;
@@ -51,7 +51,7 @@ button {
   }
 }
 
-#modal-root {
+#portal {
   position: fixed;
   inset: 0;
   z-index: 1000;
@@ -60,7 +60,6 @@ button {
 .showContent {
   animation: showAnimation .2s linear;
   position: relative;
-  z-index: 20;
 }
 
 @keyframes showAnimation {
@@ -91,5 +90,5 @@ button {
 }
 
 .Toastify__toast-theme--dark {
-  background: #2a2a2a !important;
+  background: $modal_background !important;
 }

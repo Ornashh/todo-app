@@ -9,6 +9,7 @@ import useClickAway from "../../hooks/useClickAway";
 import Portal from "../../utils/portal";
 import DeleteModal from "../../components/Modals/DeleteModal";
 import EditModal from "../../components/Modals/EditModal";
+import RenderIf from "../../utils/renderIf";
 
 const Modals = {
   deleteModal: <DeleteModal />,
@@ -44,7 +45,7 @@ const Modal = () => {
   if (!modalProps.open) return null;
 
   return (
-    <Portal wrapperId="modal-root">
+    <Portal>
       <div className={s.modal_outer}>
         <div ref={modal} className={clsx(s.modal_inner, animation)}>
           <div className={s.modal_header}>
@@ -53,7 +54,9 @@ const Modal = () => {
               <Icon name="close" />
             </button>
           </div>
-          {modalProps.type ? <ModalInner /> : null}
+          <RenderIf isTrue={modalProps.type}>
+            <ModalInner />
+          </RenderIf>
         </div>
       </div>
     </Portal>
