@@ -7,7 +7,7 @@ import s from "./edit.module.scss";
 import { useAppContext } from "../../../context";
 import { updateTask } from "../../../api";
 import Button from "../../../ui/Button";
-import TextField from "../../../ui/TextField";
+import TextField from "../../../ui/Textfield";
 import settings from "../../../utils/toastSettings";
 
 const EditModal = () => {

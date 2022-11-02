@@ -7,7 +7,7 @@ import "../../assets/styles/auth.scss";
 
 import { signUp } from "../../api";
 import PageLayout from "../../components/PageLayout";
-import TextField from "../../ui/TextField";
+import TextField from "../../ui/Textfield";
 import Button from "../../ui/Button";
 import settings from "../../utils/toastSettings";
 import { signUpSchemas } from "../../utils/schemas";
