@@ -1,5 +1,4 @@
 import React from "react";
-import clsx from "clsx";
 
 import s from "./textfield.module.scss";
 import RenderIf from "../../utils/renderIf";
@@ -9,7 +8,6 @@ const TextField = (props) => {
     label,
     name,
     type = "text",
-    variant,
     placeholder,
     requiredMark = false,
     errors,
@@ -19,9 +17,7 @@ const TextField = (props) => {
   } = props;
 
   return (
-    <div
-      className={clsx(s.textField, { [s.outlined]: variant === "outlined" })}
-    >
+    <div className={s.textField}>
       <RenderIf isTrue={label}>
         <label className={!requiredMark ? s.not_required : ""}>{label}</label>
       </RenderIf>
