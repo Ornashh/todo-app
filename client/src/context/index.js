@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import useResize from "../hooks/useResize";
 
 const AppContext = createContext(null);
+const themeLocalStorage = localStorage.getItem("theme") || "dark";
 
 const AppContextProvider = ({ children }) => {
   const userAuth = JSON.parse(localStorage.getItem("user"));
@@ -13,6 +14,7 @@ const AppContextProvider = ({ children }) => {
     type: "",
     data: {},
   });
+  const [theme, setTheme] = useState(themeLocalStorage);
   const resize = useResize(768);
 
   useEffect(() => {
@@ -44,6 +46,20 @@ const AppContextProvider = ({ children }) => {
     setModalProps({ open: false, title: "", type: "", data: {} });
   };
 
+  const handleTheme = () => {
+    setTheme((current) => (current === "light" ? "dark" : "light"));
+  };
+
+  useEffect(() => {
+    if (theme === "light") {
+      document.querySelector("html").setAttribute("data-theme", "light");
+      localStorage.setItem("theme", "light");
+    } else {
+      document.querySelector("html").removeAttribute("data-theme", "light");
+      localStorage.removeItem("theme");
+    }
+  }, [theme]);
+
   return (
     <AppContext.Provider
       value={{
@@ -53,6 +69,8 @@ const AppContextProvider = ({ children }) => {
         closeModal,
         isOpenMenu,
         handleToggleMenu,
+        theme,
+        handleTheme,
       }}
     >
       {children}

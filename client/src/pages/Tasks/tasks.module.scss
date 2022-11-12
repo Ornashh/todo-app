@@ -1,5 +1,3 @@
-@import "../../assets/styles/variables";
-
 .wrapper {
   display: flex;
   position: relative;
@@ -24,14 +22,14 @@
 }
 
 .sidebar {
-  background-color: $modal_background;
+  border-right: 1px solid var(--border-color);
   min-width: 250px;
   padding: 20px 0;
   transition: transform .3s ease;
   z-index: 20;
 
   @media (max-width: 768px) {
-    background-color: $modal_background;
+    background-color: var(--backround-color);
     border-right: none;
     position: absolute;
     top: 0;
@@ -52,13 +50,13 @@
 
   button {
     font-size: 18px;
-    color: #fff;
+    color: var(--text-color);
     text-align: left;
     padding: 10px 20px;
     transition: color .3s ease;
 
     &:hover {
-      color: $primary_color;
+      color: var(--primary-color);
     }
   }
 }
@@ -72,14 +70,14 @@
 
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  scrollbar-color: $primary_color $background_color;
+  scrollbar-color: var(--primary-color) var(--backround-color);
 
   &::-webkit-scrollbar {
     width: 5px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: $primary_color;
+    background: var(--primary-color);
     border-radius: 5px;
   }
 }
@@ -95,12 +93,12 @@
   h2 {
     font-size: 38px;
     font-weight: 500;
-    color: $primary_color
+    color: var(--primary-color)
   }
 
   p {
     font-size: 16px;
     font-weight: 300;
-    color: $label_color;
+    color: var(--label-color);
   }
 }

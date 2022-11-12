@@ -6,11 +6,12 @@ import s from "./navbar.module.scss";
 import { useAppContext } from "../../context";
 import Icon from "../Icon";
 import Dropdown from "../../ui/Dropdown";
-import RenderIf from "../../utils/renderIf";
+import RenderIf from "../../utils/RenderIf";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { isAuth, handleToggleMenu } = useAppContext();
+  const { isAuth, isOpenMenu, handleToggleMenu, theme, handleTheme } =
+    useAppContext();
   const location = useLocation();
   const path = location.pathname;
 
@@ -28,7 +29,7 @@ const Navbar = () => {
       <div className={s.navbar_inner}>
         <RenderIf isTrue={isAuth && path === "/tasks"}>
           <button className={s.menu} onClick={handleToggleMenu}>
-            <Icon name="menu" />
+            <Icon name={isOpenMenu ? "close" : "menu"} />
           </button>
         </RenderIf>
         <Link to="/" className={s.logo}>
@@ -40,15 +41,22 @@ const Navbar = () => {
               <Icon name="tasks" />
               <div>My tasks</div>
             </button>
+            <button onClick={handleTheme}>
+              <Icon name={theme === "dark" ? "dark" : "light"} />
+              <div>{theme === "dark" ? "Dark" : "Light"} theme</div>
+            </button>
             <button onClick={handleLogout}>
               <Icon name="logout" />
               <div>Log out</div>
             </button>
           </Dropdown>
         ) : (
-          <Link to="sign_in" className={s.signIn_link}>
-            Sign in
-          </Link>
+          <div className={s.action}>
+            <Link to="sign_in">Sign in</Link>
+            <button onClick={handleTheme}>
+              <Icon name={theme === "dark" ? "dark" : "light"} />
+            </button>
+          </div>
         )}
       </div>
     </div>

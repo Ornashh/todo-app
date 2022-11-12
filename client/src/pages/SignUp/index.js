@@ -5,12 +5,13 @@ import { toast } from "react-toastify";
 
 import "../../assets/styles/auth.scss";
 
+import { useAppContext } from "../../context";
 import { signUp } from "../../api";
 import PageLayout from "../../components/PageLayout";
 import TextField from "../../ui/Textfield";
 import Button from "../../ui/Button";
-import settings from "../../utils/toastSettings";
-import { signUpSchemas } from "../../utils/schemas";
+import Settings from "../../utils/Settings";
+import { signUpSchemas } from "../../utils/Schemas";
 
 const initialState = {
   first_name: "",
@@ -20,14 +21,16 @@ const initialState = {
 };
 
 const SignUp = () => {
+  const { theme } = useAppContext();
+
   const onSubmit = (values, actions) => {
     signUp(values)
       .then(() => {
-        toast.success("You have successfully signed up", settings);
+        toast.success("You have successfully signed up", Settings(theme));
         actions.resetForm();
       })
       .catch((error) => {
-        toast.error(error.response.data.message, settings);
+        toast.error(error.response.data.message, Settings(theme));
         actions.setSubmitting(false);
       });
   };
@@ -82,8 +85,13 @@ const SignUp = () => {
               handleChange={handleChange}
               errors={errors.password}
             />
-            <Button type="submit" fullWidth disabled={isSubmitting}>
-              {isSubmitting ? "Loading..." : "Sign up"}
+            <Button
+              type="submit"
+              fullWidth
+              disabled={isSubmitting}
+              loading={isSubmitting}
+            >
+              Sign up
             </Button>
           </form>
           <div className="auth_footer">

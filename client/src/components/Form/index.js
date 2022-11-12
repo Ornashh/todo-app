@@ -3,11 +3,13 @@ import { toast } from "react-toastify";
 
 import s from "./form.module.scss";
 
+import { useAppContext } from "../../context";
 import { createTask } from "../../api";
 import Icon from "../Icon";
-import settings from "../../utils/toastSettings";
+import Settings from "../../utils/Settings";
 
 const Form = ({ setTasks }) => {
+  const { theme } = useAppContext();
   const [state, setState] = useState({ title: "" });
   const [isLoading, setIsLoading] = useState(false);
 
@@ -32,7 +34,7 @@ const Form = ({ setTasks }) => {
           setIsLoading(false);
         });
     } else {
-      toast.info("Enter a task", settings);
+      toast.info("Enter a task", Settings(theme));
     }
   };
 

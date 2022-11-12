@@ -7,7 +7,7 @@ import { useAppContext } from "../../context";
 import { updateTask } from "../../api";
 import Icon from "../Icon";
 import Dropdown from "../../ui/Dropdown";
-import RenderIf from "../../utils/renderIf";
+import RenderIf from "../../utils/RenderIf";
 
 const Task = ({ _id, title, desc, isCompleted, setTasks }) => {
   const { openModal } = useAppContext();
@@ -66,7 +66,7 @@ const Task = ({ _id, title, desc, isCompleted, setTasks }) => {
         </RenderIf>
       </div>
       <div className={s.dropdown_wrapper}>
-        <Dropdown>
+        <Dropdown primaryColor>
           <button onClick={handleEdit}>
             <Icon name="edit" />
             <div>Edit task</div>

@@ -4,9 +4,10 @@ import s from "./dropdown.module.scss";
 
 import Icon from "../../components/Icon";
 import useClickAway from "../../hooks/useClickAway";
-import RenderIf from "../../utils/renderIf";
+import RenderIf from "../../utils/RenderIf";
+import clsx from "clsx";
 
-const Dropdown = ({ icon, children }) => {
+const Dropdown = ({ icon, primaryColor, children }) => {
   const dropdown = useRef(null);
   const [animation, setAnimation] = useState("hideContent");
   const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +28,10 @@ const Dropdown = ({ icon, children }) => {
 
   return (
     <div className={s.dropdown_outer} ref={dropdown}>
-      <button className={s.dropdown_button} onClick={handleToggle}>
+      <button
+        className={clsx(s.dropdown_button, { [s.primary]: primaryColor })}
+        onClick={handleToggle}
+      >
         <Icon name={icon ? icon : "dots"} />
       </button>
       <RenderIf isTrue={isOpen}>

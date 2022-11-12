@@ -3,6 +3,8 @@ import clsx from "clsx";
 
 import s from "./button.module.scss";
 
+const Loading = () => <div className={s.loader} />;
+
 const Button = (props) => {
   const {
     type = "button",
@@ -11,6 +13,7 @@ const Button = (props) => {
     fullWidth,
     disabled,
     onClick,
+    loading = false,
   } = props;
 
   return (
@@ -23,7 +26,7 @@ const Button = (props) => {
       disabled={disabled}
       onClick={onClick}
     >
-      {children}
+      {loading ? <Loading /> : children}
     </button>
   );
 };

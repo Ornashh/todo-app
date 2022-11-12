@@ -9,25 +9,29 @@ import { ReactComponent as Delete } from "@material-design-icons/svg/filled/dele
 import { ReactComponent as Close } from "@material-design-icons/svg/filled/close.svg";
 import { ReactComponent as Menu } from "@material-design-icons/svg/filled/menu.svg";
 import { ReactComponent as User } from "@material-design-icons/svg/filled/account_circle.svg";
+import { ReactComponent as Login } from "@material-design-icons/svg/filled/login.svg";
 import { ReactComponent as Logout } from "@material-design-icons/svg/filled/logout.svg";
 import { ReactComponent as Notes } from "@material-design-icons/svg/filled/notes.svg";
+import { ReactComponent as Dark } from "@material-design-icons/svg/outlined/dark_mode.svg";
+import { ReactComponent as Light } from "@material-design-icons/svg/outlined/light_mode.svg";
 
 const List = {
-  add: <Add fill="#E64A19" />,
-  checked: <Checked fill="#E64A19" />,
-  unchecked: <Unchecked fill="#E64A19" />,
-  dots: <Dots fill="#FFF" />,
-  edit: <Edit fill="#BDBDBD" />,
-  delete: <Delete fill="#BDBDBD" />,
-  close: <Close fill="#BDBDBD" />,
-  menu: <Menu fill="#FFF" />,
-  user: <User fill="#FFF" />,
-  logout: <Logout fill="#BDBDBD" />,
-  tasks: <Notes fill="#BDBDBD" />,
+  add: <Add />,
+  checked: <Checked />,
+  unchecked: <Unchecked />,
+  dots: <Dots />,
+  edit: <Edit />,
+  delete: <Delete />,
+  close: <Close />,
+  menu: <Menu />,
+  user: <User />,
+  login: <Login />,
+  logout: <Logout />,
+  tasks: <Notes />,
+  dark: <Dark />,
+  light: <Light />,
 };
 
-const Icon = ({ name }) => {
-  return List[name];
-};
+const Icon = ({ name }) => List[name];
 
 export default Icon;

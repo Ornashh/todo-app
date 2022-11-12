@@ -1,4 +1,28 @@
-@import "variables";
+:root {
+  --primary-color: #E64A19;
+  --secondary-color: #333;
+  --text-color: #FFF;
+  --backround-color: #212121;
+  --border-color: #424242;
+  --radius: 4px;
+  --label-color: #BDBDBD;
+  --hover: #F4511E;
+  --secondary-hover: #545454;
+  --dropdown-button-hover: #333333;
+  --modal-background: #2A2A2A;
+  --shadow: 0 1px 8px 2px rgba(0, 0, 0, 0.2)
+}
+
+[data-theme="light"] {
+  --secondary-color: #e2e2e2;
+  --text-color: #212121;
+  --backround-color: #fff;
+  --border-color: #bdbdbd;
+  --label-color: #212121;
+  --secondary-hover: #EEE;
+  --dropdown-button-hover: #f1f1f1;
+  --modal-background: #fff;
+}
 
 * {
   box-sizing: border-box;
@@ -10,8 +34,13 @@ body {
   font-family: 'Oswald', sans-serif;
   font-size: 14px;
   font-weight: 400;
-  color: #fff;
-  background-color: $background_color;
+  color: var(--text-color);
+  background-color: var(--backround-color);
+}
+
+.light {
+  color: #212121;
+  background-color: #fff;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -29,7 +58,7 @@ input {
   outline: none;
   border: none;
   background: none;
-  border-radius: $border_radius;
+  border-radius: var(--radius);
 
   &:disabled {
     opacity: 0.5;
@@ -90,5 +119,5 @@ button {
 }
 
 .Toastify__toast-theme--dark {
-  background: $modal_background !important;
+  background: var(--modal-background) !important;
 }

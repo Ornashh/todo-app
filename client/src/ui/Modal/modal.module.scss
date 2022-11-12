@@ -1,5 +1,3 @@
-@import "../../assets/styles/variables";
-
 .modal_outer {
   background-color: rgba(0, 0, 0, 0.7);
   display: flex;
@@ -13,8 +11,8 @@
 }
 
 .modal_inner {
-  background-color: $modal_background;
-  border-radius: $border_radius;
+  background-color: var(--modal-background);
+  border-radius: var(--radius);
   min-width: 500px;
 
   @media (max-width: 768px) {
@@ -31,13 +29,8 @@
     height: 24px;
 
     svg {
+      fill: var(--text-color);
       transition: fill .3s ease;
-    }
-
-    &:hover {
-      svg {
-        fill: #fff;
-      }
     }
   }
 }

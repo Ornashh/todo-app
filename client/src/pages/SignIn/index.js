@@ -5,14 +5,17 @@ import { toast } from "react-toastify";
 
 import "../../assets/styles/auth.scss";
 
+import { useAppContext } from "../../context";
 import { signIn } from "../../api";
 import PageLayout from "../../components/PageLayout";
 import TextField from "../../ui/Textfield";
 import Button from "../../ui/Button";
-import { signInSchemas } from "../../utils/schemas";
-import settings from "../../utils/toastSettings";
+import { signInSchemas } from "../../utils/Schemas";
+import Settings from "../../utils/Settings";
 
 const SignIn = () => {
+  const { theme } = useAppContext();
+
   const onSubmit = (values, actions) => {
     signIn(values)
       .then((res) => {
@@ -22,7 +25,7 @@ const SignIn = () => {
         }
       })
       .catch((error) => {
-        toast.error(error.response.data.message, settings);
+        toast.error(error.response.data.message, Settings(theme));
         actions.setSubmitting(false);
       });
   };
@@ -66,8 +69,9 @@ const SignIn = () => {
               fullWidth
               onClick={handleSubmit}
               disabled={isSubmitting}
+              loading={isSubmitting}
             >
-              {isSubmitting ? "Loading..." : "Sign in"}
+              Sign in
             </Button>
           </form>
           <div className="auth_footer">

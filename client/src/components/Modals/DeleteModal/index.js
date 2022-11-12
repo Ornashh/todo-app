@@ -1,14 +1,15 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 import s from "./delete.module.scss";
-import Button from "../../../ui/Button";
+
 import { useAppContext } from "../../../context";
 import { deleteTask } from "../../../api";
-import { toast } from "react-toastify";
-import settings from "../../../utils/toastSettings";
+import Button from "../../../ui/Button";
+import Settings from "../../../utils/Settings";
 
 const DeleteModal = () => {
-  const { modalProps, closeModal } = useAppContext();
+  const { modalProps, closeModal, theme } = useAppContext();
   const { data } = modalProps;
 
   const [isLoading, setIsLoading] = useState(false);
@@ -18,7 +19,7 @@ const DeleteModal = () => {
     deleteTask(data._id)
       .then((res) => {
         data.setTasks(res.data.todos);
-        toast.success(res.message, settings);
+        toast.success(res.message, Settings(theme));
       })
       .catch((error) => {
         console.log(error);
@@ -36,8 +37,8 @@ const DeleteModal = () => {
         <Button secondary onClick={closeModal}>
           Cancel
         </Button>
-        <Button disabled={isLoading} onClick={handleDelete}>
-          {isLoading ? "Loading..." : "Delete"}
+        <Button disabled={isLoading} onClick={handleDelete} loading={isLoading}>
+          Delete
         </Button>
       </div>
     </div>

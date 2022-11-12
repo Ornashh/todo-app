@@ -14,7 +14,7 @@ import SignIn from "./pages/SignIn";
 import Tasks from "./pages/Tasks";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
-import PrivateRoute from "./utils/privateRoute";
+import PrivateRoute from "./utils/PrivateRoute";
 
 function App() {
   const { isAuth } = useAppContext();

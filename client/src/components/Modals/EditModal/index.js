@@ -8,10 +8,10 @@ import { useAppContext } from "../../../context";
 import { updateTask } from "../../../api";
 import Button from "../../../ui/Button";
 import TextField from "../../../ui/Textfield";
-import settings from "../../../utils/toastSettings";
+import Settings from "../../../utils/Settings";
 
 const EditModal = () => {
-  const { modalProps, closeModal } = useAppContext();
+  const { modalProps, closeModal, theme } = useAppContext();
   const { data } = modalProps;
 
   const [updateState, setUpdateState] = useState({
@@ -32,7 +32,7 @@ const EditModal = () => {
     updateTask(updateState)
       .then((res) => {
         data.setTasks(res.data.todos);
-        toast.success(res.message, settings);
+        toast.success(res.message, Settings(theme));
       })
       .catch((error) => {
         console.log(error);
@@ -73,8 +73,8 @@ const EditModal = () => {
           <Button secondary onClick={closeModal}>
             Cancel
           </Button>
-          <Button type="submit" disabled={disabledButton}>
-            {isLoading ? "Loading..." : "Save"}
+          <Button type="submit" disabled={disabledButton} loading={isLoading}>
+            Save
           </Button>
         </div>
       </form>

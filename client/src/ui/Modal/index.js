@@ -6,10 +6,10 @@ import s from "./modal.module.scss";
 import { useAppContext } from "../../context";
 import Icon from "../../components/Icon";
 import useClickAway from "../../hooks/useClickAway";
-import Portal from "../../utils/portal";
+import Portal from "../../utils/Portal";
 import DeleteModal from "../../components/Modals/DeleteModal";
 import EditModal from "../../components/Modals/EditModal";
-import RenderIf from "../../utils/renderIf";
+import RenderIf from "../../utils/RenderIf";
 
 const Modals = {
   deleteModal: <DeleteModal />,
