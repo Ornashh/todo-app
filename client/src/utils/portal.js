@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 
 const Portal = ({ children }) => {
@@ -10,7 +10,7 @@ const Portal = ({ children }) => {
     document.body.appendChild(container);
 
     return () => document.body.removeChild(container);
-  }, []);
+  }, [container]);
 
   return ReactDOM.createPortal(children, container);
 };
