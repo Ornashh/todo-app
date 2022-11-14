@@ -2,11 +2,11 @@ const Settings = (theme) => {
   return {
     position: "bottom-center",
     autoClose: 2000,
-    hideProgressBar: true,
+    hideProgressBar: false,
     closeOnClick: false,
-    pauseOnHover: false,
+    pauseOnHover: true,
     draggable: false,
-    progress: undefined,
+    progress: 0,
     theme: theme,
   };
 };

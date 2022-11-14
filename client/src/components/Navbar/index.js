@@ -43,7 +43,7 @@ const Navbar = () => {
             </button>
             <button onClick={handleTheme}>
               <Icon name={theme === "dark" ? "dark" : "light"} />
-              <div>{theme === "dark" ? "Dark" : "Light"} theme</div>
+              <div>{theme === "dark" ? "Dark" : "Light"} mode</div>
             </button>
             <button onClick={handleLogout}>
               <Icon name="logout" />

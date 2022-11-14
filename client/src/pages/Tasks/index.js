@@ -9,6 +9,7 @@ import PageLayout from "../../components/PageLayout";
 import Form from "../../components/Form";
 import Task from "../../components/Task";
 import Loader from "../../ui/Loader";
+import RenderIf from "../../utils/RenderIf";
 
 const Tasks = () => {
   const { isOpenMenu, handleToggleMenu } = useAppContext();
@@ -40,10 +41,9 @@ const Tasks = () => {
   return (
     <PageLayout title="Tasks">
       <div className={s.wrapper}>
-        <div
-          className={clsx(s.layout, { [s.show_layout]: isOpenMenu })}
-          onClick={handleToggleMenu}
-        />
+        <RenderIf isTrue={isOpenMenu}>
+          <div className={s.layout} onClick={handleToggleMenu} />
+        </RenderIf>
         <div className={clsx(s.sidebar, { [s.toggle_menu]: isOpenMenu })}>
           <div className={s.sidebar_inner}>
             <button>Tasks</button>

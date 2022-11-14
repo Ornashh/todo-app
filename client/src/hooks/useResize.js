@@ -5,12 +5,16 @@ export default function useResize(width) {
     window.matchMedia(`(min-width: ${width}px)`).matches
   );
 
+  const handleMatches = (e) => {
+    setMatches(e.matches);
+  };
+
   useEffect(() => {
     window
       .matchMedia(`(min-width: ${width}px)`)
-      .addEventListener("change", (e) => setMatches(e.matches));
+      .addEventListener("change", handleMatches);
     return () => {
-      setMatches(null);
+      window.removeEventListener("change", handleMatches);
     };
   }, [width]);
 
