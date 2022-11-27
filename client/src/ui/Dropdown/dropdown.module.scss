@@ -3,14 +3,19 @@
 }
 
 .dropdown_button {
+  background-color: var(--modal-background);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
   display: flex;
+  justify-content: center;
   align-items: center;
-  height: 100%;
+  width: 30px;
+  height: 30px;
 
   svg {
     fill: var(--text-color);
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -25,7 +30,7 @@
   display: grid;
   position: absolute;
   top: 5px;
-  right: 5px;
+  right: 3px;
   z-index: 20;
 }
 
@@ -38,7 +43,7 @@
   padding: 8px 0;
 
   button {
-    font-size: 16px;
+    font-size: 14px;
     color: var(--text-color);
     display: flex;
     align-items: center;

@@ -2,15 +2,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 55px;
 }
 
 .loader {
   border-radius: 50%;
-  border: 3px solid transparent;
+  border: 4px solid transparent;
   border-bottom-color: var(--primary-color);
-  width: 38px;
-  height: 38px;
-  animation: animationLoader .8s linear infinite;
+  min-width: 50px;
+  min-height: 50px;
+  animation: animationLoader .6s linear infinite;
 }
 
 @keyframes animationLoader {

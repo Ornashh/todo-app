@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 import "../../assets/styles/auth.scss";
 
@@ -21,6 +22,7 @@ const initialState = {
 };
 
 const SignUp = () => {
+  const { t } = useTranslation();
   const { theme } = useAppContext();
 
   const onSubmit = (values, actions) => {
@@ -48,12 +50,12 @@ const SignUp = () => {
     <PageLayout title="Sign up">
       <div className="auth_outer">
         <div className="auth_inner">
-          <h1 className="auth_title">Sign up</h1>
+          <h1 className="auth_title">{t("Auth.Sign up v2")}</h1>
           <form className="auth_body" onSubmit={handleSubmit}>
             <div className="auth_item">
               <TextField
                 name="first_name"
-                label="First name"
+                label={t("Auth.First name")}
                 requiredMark
                 value={values.first_name}
                 handleChange={handleChange}
@@ -61,7 +63,7 @@ const SignUp = () => {
               />
               <TextField
                 name="last_name"
-                label="Last name"
+                label={t("Auth.Last name")}
                 requiredMark
                 value={values.last_name}
                 handleChange={handleChange}
@@ -70,7 +72,7 @@ const SignUp = () => {
             </div>
             <TextField
               name="username"
-              label="Username"
+              label={t("Auth.Username")}
               requiredMark
               value={values.username.trim()}
               handleChange={handleChange}
@@ -79,7 +81,7 @@ const SignUp = () => {
             <TextField
               name="password"
               type="password"
-              label="Password"
+              label={t("Auth.Password")}
               requiredMark
               value={values.password.trim()}
               handleChange={handleChange}
@@ -91,12 +93,12 @@ const SignUp = () => {
               disabled={isSubmitting}
               loading={isSubmitting}
             >
-              Sign up
+              {t("Auth.Sign up")}
             </Button>
           </form>
           <div className="auth_footer">
-            <h6>Have an account?</h6>
-            <Link to="/sign_in">Sign in</Link>
+            <h6>{t("Auth.Have an account")}</h6>
+            <Link to="/sign_in">{t("Auth.Sign in")}</Link>
           </div>
         </div>
       </div>

@@ -35,6 +35,20 @@ body {
   font-weight: 400;
   color: var(--text-color);
   background-color: var(--backround-color);
+
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) var(--backround-color);
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 5px;
+  }
 }
 
 .light {

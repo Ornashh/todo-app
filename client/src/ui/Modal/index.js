@@ -4,7 +4,7 @@ import clsx from "clsx";
 import s from "./modal.module.scss";
 
 import { useAppContext } from "../../context";
-import Icon from "../../components/Icon";
+import Icon from "../../ui/Icon";
 import useClickAway from "../../hooks/useClickAway";
 import Portal from "../../utils/Portal";
 import DeleteModal from "../../components/Modals/DeleteModal";
@@ -55,7 +55,9 @@ const Modal = () => {
             </button>
           </div>
           <RenderIf isTrue={modalProps.type}>
-            <ModalInner />
+            <div className={s.modal_content}>
+              <ModalInner />
+            </div>
           </RenderIf>
         </div>
       </div>

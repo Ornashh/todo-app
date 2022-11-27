@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 import "../../assets/styles/auth.scss";
 
@@ -14,6 +15,7 @@ import { signInSchemas } from "../../utils/Schemas";
 import Settings from "../../utils/Settings";
 
 const SignIn = () => {
+  const { t } = useTranslation();
   const { theme } = useAppContext();
 
   const onSubmit = (values, actions) => {
@@ -43,11 +45,11 @@ const SignIn = () => {
     <PageLayout title="Sign in">
       <div className="auth_outer">
         <div className="auth_inner">
-          <h1 className="auth_title">Sign in</h1>
+          <h1 className="auth_title">{t("Auth.Sign in")}</h1>
           <form className="auth_body" onSubmit={handleSubmit}>
             <TextField
               name="username"
-              label="Username"
+              label={t("Auth.Username")}
               requiredMark
               disabled={isSubmitting}
               value={values.username.trim()}
@@ -57,7 +59,7 @@ const SignIn = () => {
             <TextField
               name="password"
               type="password"
-              label="Password"
+              label={t("Auth.Password")}
               requiredMark
               disabled={isSubmitting}
               value={values.password.trim()}
@@ -71,12 +73,12 @@ const SignIn = () => {
               disabled={isSubmitting}
               loading={isSubmitting}
             >
-              Sign in
+              {t("Auth.Sign in")}
             </Button>
           </form>
           <div className="auth_footer">
-            <h6>Don't have an account?</h6>
-            <Link to="/sign_up">Sign up</Link>
+            <h6>{t("Auth.No account")}</h6>
+            <Link to="/sign_up">{t("Auth.Sign up")}</Link>
           </div>
         </div>
       </div>

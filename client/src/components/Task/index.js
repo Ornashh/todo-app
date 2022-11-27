@@ -1,21 +1,23 @@
 import React, { useState } from "react";
 import clsx from "clsx";
+import { useTranslation } from "react-i18next";
 
 import s from "./task.module.scss";
 
 import { useAppContext } from "../../context";
 import { updateTask } from "../../api";
-import Icon from "../Icon";
+import Icon from "../../ui/Icon";
 import Dropdown from "../../ui/Dropdown";
 import RenderIf from "../../utils/RenderIf";
 
 const Task = ({ _id, title, desc, isCompleted, setTasks }) => {
+  const { t } = useTranslation();
   const { openModal } = useAppContext();
   const [isLoading, setIsLoading] = useState(false);
 
   const handleEdit = () => {
     openModal({
-      title: "Edit",
+      title: t("Modal.Modal title edit"),
       type: "editModal",
       data: { _id: _id, title: title, desc: desc || "", setTasks: setTasks },
     });
@@ -23,7 +25,7 @@ const Task = ({ _id, title, desc, isCompleted, setTasks }) => {
 
   const handleDelete = () => {
     openModal({
-      title: "Delete",
+      title: t("Modal.Modal title delete"),
       type: "deleteModal",
       data: {
         _id: _id,
@@ -66,14 +68,14 @@ const Task = ({ _id, title, desc, isCompleted, setTasks }) => {
         </RenderIf>
       </div>
       <div className={s.dropdown_wrapper}>
-        <Dropdown primaryColor>
+        <Dropdown icon="dots">
           <button onClick={handleEdit}>
             <Icon name="edit" />
-            <div>Edit task</div>
+            <div>{t("Task.Edit")}</div>
           </button>
           <button onClick={handleDelete}>
             <Icon name="delete" />
-            <div>Delete task</div>
+            <div>{t("Task.Delete")}</div>
           </button>
         </Dropdown>
       </div>

@@ -2,7 +2,7 @@ import React, { cloneElement, useRef, useState } from "react";
 
 import s from "./dropdown.module.scss";
 
-import Icon from "../../components/Icon";
+import Icon from "../../ui/Icon";
 import useClickAway from "../../hooks/useClickAway";
 import RenderIf from "../../utils/RenderIf";
 import clsx from "clsx";

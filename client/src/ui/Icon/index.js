@@ -14,6 +14,7 @@ import { ReactComponent as Logout } from "@material-design-icons/svg/filled/logo
 import { ReactComponent as Notes } from "@material-design-icons/svg/filled/notes.svg";
 import { ReactComponent as Dark } from "@material-design-icons/svg/outlined/dark_mode.svg";
 import { ReactComponent as Light } from "@material-design-icons/svg/outlined/light_mode.svg";
+import { ReactComponent as Language } from "@material-design-icons/svg/outlined/language.svg";
 
 const List = {
   add: <Add />,
@@ -30,6 +31,7 @@ const List = {
   tasks: <Notes />,
   dark: <Dark />,
   light: <Light />,
+  language: <Language />,
 };
 
 const Icon = ({ name }) => List[name];

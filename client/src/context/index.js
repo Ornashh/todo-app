@@ -1,13 +1,12 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import useResize from "../hooks/useResize";
 
 const AppContext = createContext(null);
-const themeLocalStorage = localStorage.getItem("theme") || "dark";
+const themeLocalStorage = localStorage.getItem("theme");
+const langLocalStorage = localStorage.getItem("lang");
 
 const AppContextProvider = ({ children }) => {
   const userAuth = JSON.parse(localStorage.getItem("user"));
   const [isAuth, setIsAuth] = useState(false);
-  const [isOpenMenu, setIsOpenMenu] = useState(false);
   const [modalProps, setModalProps] = useState({
     open: false,
     title: "",
@@ -15,23 +14,13 @@ const AppContextProvider = ({ children }) => {
     data: {},
   });
   const [theme, setTheme] = useState(themeLocalStorage);
-  const resize = useResize(768);
+  const [lang, setLang] = useState(langLocalStorage);
 
   useEffect(() => {
     if (userAuth) {
       setIsAuth(true);
     }
   }, [userAuth]);
-
-  useEffect(() => {
-    if (resize) {
-      setIsOpenMenu(false);
-    }
-  }, [resize]);
-
-  const handleToggleMenu = () => {
-    setIsOpenMenu(!isOpenMenu);
-  };
 
   const openModal = ({ title = "", type = "", data = {} }) => {
     setModalProps({
@@ -50,6 +39,20 @@ const AppContextProvider = ({ children }) => {
     setTheme((current) => (current === "light" ? "dark" : "light"));
   };
 
+  const handleLang = (lang) => {
+    setLang(lang);
+  };
+
+  useEffect(() => {
+    if (lang === "en") {
+      localStorage.setItem("lang", "en");
+    } else if (lang === "ru") {
+      localStorage.setItem("lang", "ru");
+    } else {
+      localStorage.removeItem("lang");
+    }
+  }, [lang]);
+
   useEffect(() => {
     if (theme === "light") {
       document.querySelector("html").setAttribute("data-theme", "light");
@@ -67,10 +70,10 @@ const AppContextProvider = ({ children }) => {
         modalProps,
         openModal,
         closeModal,
-        isOpenMenu,
-        handleToggleMenu,
         theme,
         handleTheme,
+        lang,
+        handleLang,
       }}
     >
       {children}

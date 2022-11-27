@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 import s from "./delete.module.scss";
 
@@ -9,6 +10,7 @@ import Button from "../../../ui/Button";
 import Settings from "../../../utils/Settings";
 
 const DeleteModal = () => {
+  const { t } = useTranslation();
   const { modalProps, closeModal, theme } = useAppContext();
   const { data } = modalProps;
 
@@ -19,7 +21,7 @@ const DeleteModal = () => {
     deleteTask(data._id)
       .then((res) => {
         data.setTasks(res.data.todos);
-        toast.success(res.message, Settings(theme));
+        toast.success(t("Alert.Task deleted"), Settings(theme));
       })
       .catch((error) => {
         console.log(error);
@@ -31,14 +33,14 @@ const DeleteModal = () => {
   };
 
   return (
-    <div>
-      <div className={s.text}>Are you sure you want to delete?</div>
+    <div className={s.content}>
+      <div className={s.text}>{t("Modal.Delete message")}</div>
       <div className={s.buttons}>
         <Button secondary onClick={closeModal}>
-          Cancel
+          {t("Modal.Cancel")}
         </Button>
         <Button disabled={isLoading} onClick={handleDelete} loading={isLoading}>
-          Delete
+          {t("Modal.Delete")}
         </Button>
       </div>
     </div>

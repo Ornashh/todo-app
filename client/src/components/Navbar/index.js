@@ -1,19 +1,22 @@
-import React from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import s from "./navbar.module.scss";
 
 import { useAppContext } from "../../context";
-import Icon from "../Icon";
+import Icon from "../../ui/Icon";
 import Dropdown from "../../ui/Dropdown";
 import RenderIf from "../../utils/RenderIf";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { isAuth, isOpenMenu, handleToggleMenu, theme, handleTheme } =
-    useAppContext();
-  const location = useLocation();
-  const path = location.pathname;
+  const { t, i18n } = useTranslation();
+  const { isAuth, theme, handleTheme, lang, handleLang } = useAppContext();
+
+  useEffect(() => {
+    i18n.changeLanguage(lang);
+  }, [lang]);
 
   const handleTasks = () => {
     navigate("/tasks");
@@ -26,38 +29,49 @@ const Navbar = () => {
 
   return (
     <div className={s.navbar_outer}>
-      <div className={s.navbar_inner}>
-        <RenderIf isTrue={isAuth && path === "/tasks"}>
-          <button className={s.menu} onClick={handleToggleMenu}>
-            <Icon name={isOpenMenu ? "close" : "menu"} />
-          </button>
-        </RenderIf>
-        <Link to="/" className={s.logo}>
-          TODOLi
-        </Link>
-        {isAuth ? (
-          <Dropdown icon="user">
-            <button onClick={handleTasks}>
-              <Icon name="tasks" />
-              <div>My tasks</div>
-            </button>
-            <button onClick={handleTheme}>
-              <Icon name={theme === "dark" ? "dark" : "light"} />
-              <div>{theme === "dark" ? "Dark" : "Light"} mode</div>
-            </button>
-            <button onClick={handleLogout}>
-              <Icon name="logout" />
-              <div>Log out</div>
-            </button>
-          </Dropdown>
-        ) : (
-          <div className={s.action}>
-            <Link to="sign_in">Sign in</Link>
-            <button onClick={handleTheme}>
-              <Icon name={theme === "dark" ? "dark" : "light"} />
-            </button>
+      <div className={s.navbar_container}>
+        <div className={s.navbar_inner}>
+          <Link to="/" className={s.logo}>
+            TODOLi
+          </Link>
+          <div className={s.actions}>
+            <div className={s.items}>
+              <Dropdown icon="language">
+                <button
+                  onClick={() => handleLang("en")}
+                  disabled={lang === "en"}
+                >
+                  English
+                </button>
+                <button
+                  onClick={() => handleLang("ru")}
+                  disabled={lang === "ru"}
+                >
+                  Русский
+                </button>
+              </Dropdown>
+              <button onClick={handleTheme} className={s.theme_button}>
+                <Icon name={theme === "dark" ? "dark" : "light"} />
+              </button>
+            </div>
+            {isAuth ? (
+              <Dropdown icon="user">
+                <button onClick={handleTasks}>
+                  <Icon name="tasks" />
+                  <div>{t("Tasks")}</div>
+                </button>
+                <button onClick={handleLogout}>
+                  <Icon name="logout" />
+                  <div>{t("Auth.Sign out")}</div>
+                </button>
+              </Dropdown>
+            ) : (
+              <Link to="sign_in" className={s.sign_in_link}>
+                {t("Auth.Sign in")}
+              </Link>
+            )}
           </div>
-        )}
+        </div>
       </div>
     </div>
   );

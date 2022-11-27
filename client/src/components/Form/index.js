@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 import s from "./form.module.scss";
 
 import { useAppContext } from "../../context";
 import { createTask } from "../../api";
-import Icon from "../Icon";
+import Icon from "../../ui/Icon";
 import Settings from "../../utils/Settings";
 
 const Form = ({ setTasks }) => {
+  const { t } = useTranslation();
   const { theme } = useAppContext();
   const [state, setState] = useState({ title: "" });
   const [isLoading, setIsLoading] = useState(false);
@@ -34,7 +36,7 @@ const Form = ({ setTasks }) => {
           setIsLoading(false);
         });
     } else {
-      toast.info("Enter a task", Settings(theme));
+      toast.info(t("Alert.Enter a task"), Settings(theme));
     }
   };
 
@@ -52,7 +54,7 @@ const Form = ({ setTasks }) => {
         name="title"
         type="text"
         disabled={isLoading}
-        placeholder="Add task"
+        placeholder={t("Task.Add")}
         value={state.title || ""}
         onChange={handleChange}
       />

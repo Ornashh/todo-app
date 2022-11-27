@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import _ from "lodash";
+import { useTranslation } from "react-i18next";
 
 import s from "./edit.module.scss";
 
@@ -11,6 +12,7 @@ import TextField from "../../../ui/Textfield";
 import Settings from "../../../utils/Settings";
 
 const EditModal = () => {
+  const { t } = useTranslation();
   const { modalProps, closeModal, theme } = useAppContext();
   const { data } = modalProps;
 
@@ -32,7 +34,7 @@ const EditModal = () => {
     updateTask(updateState)
       .then((res) => {
         data.setTasks(res.data.todos);
-        toast.success(res.message, Settings(theme));
+        toast.success(t("Alert.Task updated"), Settings(theme));
       })
       .catch((error) => {
         console.log(error);
@@ -55,30 +57,28 @@ const EditModal = () => {
     _.isEqual(cloneDataForCompare, updateState);
 
   return (
-    <div>
-      <form className={s.form} onSubmit={handleSubmit}>
-        <TextField
-          name="title"
-          label="Title"
-          value={updateState.title}
-          handleChange={handleChange}
-        />
-        <TextField
-          name="desc"
-          label="Description"
-          value={updateState.desc || ""}
-          handleChange={handleChange}
-        />
-        <div className={s.buttons}>
-          <Button secondary onClick={closeModal}>
-            Cancel
-          </Button>
-          <Button type="submit" disabled={disabledButton} loading={isLoading}>
-            Save
-          </Button>
-        </div>
-      </form>
-    </div>
+    <form className={s.form} onSubmit={handleSubmit}>
+      <TextField
+        name="title"
+        label={t("Modal.Title")}
+        value={updateState.title}
+        handleChange={handleChange}
+      />
+      <TextField
+        name="desc"
+        label={t("Modal.Desc")}
+        value={updateState.desc || ""}
+        handleChange={handleChange}
+      />
+      <div className={s.buttons}>
+        <Button secondary onClick={closeModal}>
+          {t("Modal.Cancel")}
+        </Button>
+        <Button type="submit" disabled={disabledButton} loading={isLoading}>
+          {t("Modal.Save")}
+        </Button>
+      </div>
+    </form>
   );
 };
 
