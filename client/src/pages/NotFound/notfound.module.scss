@@ -17,6 +17,7 @@
 
   div:first-child {
     font-size: clamp(90px, 9vw, 120px);
+    color: var(--primary-color)
   }
 
   div:nth-child(2) {

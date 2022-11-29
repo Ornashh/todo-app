@@ -2,7 +2,7 @@
   --primary-color: #E64A19;
   --secondary-color: #333;
   --text-color: #FFF;
-  --backround-color: #212121;
+  --background-color: #212121;
   --border-color: #424242;
   --radius: 4px;
   --label-color: #BDBDBD;
@@ -15,7 +15,7 @@
 [data-theme="light"] {
   --secondary-color: #e2e2e2;
   --text-color: #212121;
-  --backround-color: #fff;
+  --background-color: #fff;
   --border-color: #bdbdbd;
   --label-color: #212121;
   --secondary-hover: #EEE;
@@ -34,11 +34,11 @@ body {
   font-size: 14px;
   font-weight: 400;
   color: var(--text-color);
-  background-color: var(--backround-color);
+  background-color: var(--background-color);
 
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  scrollbar-color: var(--primary-color) var(--backround-color);
+  scrollbar-color: var(--primary-color) var(--background-color);
 
   &::-webkit-scrollbar {
     width: 5px;

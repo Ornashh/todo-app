@@ -7,7 +7,6 @@ import s from "./navbar.module.scss";
 import { useAppContext } from "../../context";
 import Icon from "../../ui/Icon";
 import Dropdown from "../../ui/Dropdown";
-import RenderIf from "../../utils/RenderIf";
 
 const Navbar = () => {
   const navigate = useNavigate();

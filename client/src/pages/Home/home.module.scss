@@ -12,9 +12,9 @@
 }
 
 .title {
-  font-size: clamp(55px, 9vw, 100px);
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.2;
+  text-align: center;
   text-transform: uppercase;
   animation: fadeIn 3s forwards;
   animation-delay: 0.5s;
