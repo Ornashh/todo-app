@@ -35,6 +35,7 @@ body {
   font-weight: 400;
   color: var(--text-color);
   background-color: var(--background-color);
+  overflow-x: hidden;
 
   scroll-behavior: smooth;
   scrollbar-width: thin;

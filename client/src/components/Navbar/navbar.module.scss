@@ -1,7 +1,5 @@
 .navbar_outer {
   background-color: var(--background-color);
-  box-shadow: 0 0 5px 1px rgba(0,0,0,0.3);
-  //border-bottom: 1px solid var(--border-color);
   position: sticky;
   top: 0;
   left: 0;
@@ -12,7 +10,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 50px;
+  height: 60px;
 }
 
 .navbar_container {
@@ -36,10 +34,9 @@
 }
 
 .logo {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 500;
   color: #fff;
-  background-color: var(--primary-color);
   display: flex;
   align-items: center;
   height: 100%;
@@ -58,11 +55,11 @@
 
 .sign_in_link {
   font-size: 18px;
-  transition: color .3s ease;
-
-  &:hover {
-    color: var(--primary-color);
-  }
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 0 5px;
+  transition: all .3s ease;
 }
 
 .theme_button {
