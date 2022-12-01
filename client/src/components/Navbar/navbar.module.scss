@@ -1,5 +1,6 @@
 .navbar_outer {
   background-color: var(--background-color);
+  border-bottom: 1px solid var(--border-color);
   position: sticky;
   top: 0;
   left: 0;
@@ -10,27 +11,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
+  height: 50px;
 }
 
 .navbar_container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
-}
-
-.menu {
-  height: 30px;
-
-  svg {
-    fill: var(--text-color);
-    width: 30px;
-    height: 30px;
-  }
-
-  @media (min-width: 768px) {
-    display: none;
-  }
 }
 
 .logo {
@@ -42,7 +29,7 @@
 .actions {
   display: flex;
   gap: 20px;
-  
+
   .items {
     display: flex;
     gap: 10px;
@@ -56,7 +43,6 @@
 }
 
 .theme_button {
-  background-color: var(--modal-background);
   border: 1px solid var(--border-color);
   border-radius: var(--radius);
   display: flex;

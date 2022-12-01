@@ -13,7 +13,7 @@ const AppContextProvider = ({ children }) => {
     type: "",
     data: {},
   });
-  const [theme, setTheme] = useState(themeLocalStorage);
+  const [theme, setTheme] = useState(themeLocalStorage || "dark");
   const [lang, setLang] = useState(langLocalStorage);
 
   useEffect(() => {
@@ -58,8 +58,8 @@ const AppContextProvider = ({ children }) => {
       document.querySelector("html").setAttribute("data-theme", "light");
       localStorage.setItem("theme", "light");
     } else {
-      document.querySelector("html").removeAttribute("data-theme", "light");
-      localStorage.removeItem("theme");
+      document.querySelector("html").setAttribute("data-theme", "dark");
+      localStorage.setItem("theme", "dark");
     }
   }, [theme]);
 

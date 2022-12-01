@@ -35,9 +35,7 @@ class TodoController {
       if (todo) {
         await UserModel.findOneAndUpdate(
           { _id: req.id },
-          {
-            $push: { todos: todo },
-          }
+          { $push: { todos: todo } }
         );
         const list = await UserModel.findById(req.id)
           .select("-password")
@@ -59,6 +57,12 @@ class TodoController {
       const updatedTodo = await TodoModel.findByIdAndUpdate(todo._id, todo, {
         new: true,
       });
+      if (updatedTodo.isCompleted === true) {
+        await UserModel.findOneAndUpdate(
+          { _id: req.id },
+          { $push: { completedTodos: updatedTodo } }
+        );
+      }
       if (updatedTodo) {
         const list = await UserModel.findById(req.id)
           .select("-password")
@@ -78,9 +82,7 @@ class TodoController {
         res.status(400).json({ message: "ID not specified" });
       }
       const deletedTodoId = await UserModel.findOneAndUpdate(
-        {
-          _id: req.id,
-        },
+        { _id: req.id },
         { $pull: { todos: id } }
       );
       const deletedTodo = await TodoModel.findByIdAndDelete(id);

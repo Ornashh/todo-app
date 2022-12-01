@@ -15,6 +15,8 @@ import { ReactComponent as Notes } from "@material-design-icons/svg/filled/notes
 import { ReactComponent as Dark } from "@material-design-icons/svg/outlined/dark_mode.svg";
 import { ReactComponent as Light } from "@material-design-icons/svg/outlined/light_mode.svg";
 import { ReactComponent as Language } from "@material-design-icons/svg/outlined/language.svg";
+import { ReactComponent as ArrowDown } from "@material-design-icons/svg/outlined/keyboard_arrow_down.svg";
+import { ReactComponent as ArrowRight } from "@material-design-icons/svg/outlined/keyboard_arrow_right.svg";
 
 const List = {
   add: <Add />,
@@ -32,6 +34,8 @@ const List = {
   dark: <Dark />,
   light: <Light />,
   language: <Language />,
+  arrowDown: <ArrowDown />,
+  arrowRight: <ArrowRight />,
 };
 
 const Icon = ({ name }) => List[name];

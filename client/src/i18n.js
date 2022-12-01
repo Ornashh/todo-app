@@ -8,6 +8,7 @@ const resources = {
       Tasks: "Tasks",
       Date: "Today",
       "Page not found": "Page not found.",
+      Completed: "Completed",
       Auth: {
         "Sign in": "Sign in",
         "Sign up": "Sign up",
@@ -49,6 +50,7 @@ const resources = {
       Tasks: "Задачи",
       Date: "Сегодня",
       "Page not found": "Страница не найдена.",
+      Completed: "Завершенные",
       Auth: {
         "Sign in": "Войти",
         "Sign up": "Зарегистрироваться",
