@@ -1,11 +1,6 @@
 import React from "react";
 import { ToastContainer } from "react-toastify";
-import {
-  BrowserRouter as Router,
-  Navigate,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import { useAppContext } from "./context";
 import Home from "./pages/Home";
@@ -20,7 +15,7 @@ function App() {
   const { isAuth } = useAppContext();
 
   return (
-    <Router>
+    <>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -38,7 +33,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
       <ToastContainer limit={3} />
-    </Router>
+    </>
   );
 }
 

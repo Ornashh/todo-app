@@ -1,11 +1,13 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const AppContext = createContext(null);
-const themeLocalStorage = localStorage.getItem("theme");
-const langLocalStorage = localStorage.getItem("lang");
 
 const AppContextProvider = ({ children }) => {
+  const themeLocalStorage = localStorage.getItem("theme");
+  const langLocalStorage = localStorage.getItem("lang");
   const userAuth = JSON.parse(localStorage.getItem("user"));
+
   const [isAuth, setIsAuth] = useState(false);
   const [modalProps, setModalProps] = useState({
     open: false,
@@ -14,13 +16,8 @@ const AppContextProvider = ({ children }) => {
     data: {},
   });
   const [theme, setTheme] = useState(themeLocalStorage || "dark");
-  const [lang, setLang] = useState(langLocalStorage);
-
-  useEffect(() => {
-    if (userAuth) {
-      setIsAuth(true);
-    }
-  }, [userAuth]);
+  const [lang, setLang] = useState(langLocalStorage || "en");
+  const location = useLocation();
 
   const openModal = ({ title = "", type = "", data = {} }) => {
     setModalProps({
@@ -44,12 +41,22 @@ const AppContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
+    if (userAuth) {
+      const decodedJwt = JSON.parse(atob(userAuth.token.split(".")[1]));
+      setIsAuth(true);
+
+      if (decodedJwt.exp * 1000 < Date.now()) {
+        localStorage.removeItem("user");
+        window.location.reload();
+      }
+    }
+  }, [userAuth, location]);
+
+  useEffect(() => {
     if (lang === "en") {
       localStorage.setItem("lang", "en");
     } else if (lang === "ru") {
       localStorage.setItem("lang", "ru");
-    } else {
-      localStorage.removeItem("lang");
     }
   }, [lang]);
 
@@ -67,6 +74,7 @@ const AppContextProvider = ({ children }) => {
     <AppContext.Provider
       value={{
         isAuth,
+        userAuth,
         modalProps,
         openModal,
         closeModal,

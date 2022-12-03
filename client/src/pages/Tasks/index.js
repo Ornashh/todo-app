@@ -65,41 +65,41 @@ const Tasks = () => {
               <p>{currentDate}</p>
             </div>
           </div>
+
           <Form setTasks={setTasks} />
+
           <Loader loading={isLoading}>
             <RenderIf isTrue={uncompletedTasks.length}>
               <div style={{ marginBottom: "15px" }}>
-                {uncompletedTasks?.map((task) => {
-                  return <Task key={task._id} {...task} setTasks={setTasks} />;
-                })}
+                {uncompletedTasks?.map((task) => (
+                  <Task key={task._id} {...task} setTasks={setTasks} />
+                ))}
               </div>
             </RenderIf>
             <RenderIf isTrue={completedTasks.length > 0}>
-              <>
-                <div
-                  className={s.completed_task}
-                  style={{ marginBottom: isCompleted ? "10px" : "0" }}
+              <div
+                className={s.completed_task}
+                style={{ marginBottom: isCompleted ? "10px" : "0" }}
+              >
+                <button
+                  onClick={handleToggle}
+                  className={isCompleted ? s.completed_active : ""}
                 >
-                  <button
-                    onClick={handleToggle}
-                    className={isCompleted ? s.completed_active : ""}
-                  >
-                    <Icon name="arrowRight" />
-                    <div>
-                      {t("Completed")} ({completedTasks.length})
-                    </div>
-                  </button>
-                </div>
-                <RenderIf isTrue={isCompleted}>
-                  <div className={animation}>
-                    {completedTasks?.map((task) => {
-                      return (
-                        <Task key={task._id} {...task} setTasks={setTasks} />
-                      );
-                    })}
+                  <Icon name="arrowRight" />
+                  <div>
+                    {t("Completed")} ({completedTasks.length})
                   </div>
-                </RenderIf>
-              </>
+                </button>
+              </div>
+              <RenderIf isTrue={isCompleted}>
+                <div className={animation}>
+                  {completedTasks?.map((task) => {
+                    return (
+                      <Task key={task._id} {...task} setTasks={setTasks} />
+                    );
+                  })}
+                </div>
+              </RenderIf>
             </RenderIf>
           </Loader>
         </div>
