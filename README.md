@@ -1,1 +1,1 @@
-# MERN stack todo app with authentication
+### MERN stack todo app with authentication
