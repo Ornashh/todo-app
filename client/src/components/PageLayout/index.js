@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from "react";
 
-const PageLayout = ({title = "", children}) => {
-  document.title = title;
+const PageLayout = ({ title = "", children }) => {
+  useEffect(() => {
+    document.title = `${title ? title : "Loading"} | Unsplash`;
+  }, [title]);
 
-  return <>{children}</>
+  return <>{children}</>;
 };
 
 export default PageLayout;
