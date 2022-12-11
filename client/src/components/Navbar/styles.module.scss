@@ -1,0 +1,60 @@
+.navbar_outer {
+  background-color: var(--background-color);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 25;
+}
+
+.navbar_inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+}
+
+.navbar_container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.actions {
+  display: flex;
+  gap: 20px;
+
+  .items {
+    display: flex;
+    gap: 10px;
+  }
+}
+
+.sign_in_link {
+  font-size: 18px;
+  color: var(--text-color);
+  transition: all .3s ease;
+}
+
+.theme_button {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 30px;
+  height: 30px;
+
+  svg {
+    fill: var(--text-color);
+    width: 20px;
+    height: 20px;
+  }
+}

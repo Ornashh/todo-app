@@ -1,0 +1,51 @@
+.button {
+  font-size: 16px;
+  color: #fff;
+  background-color: var(--primary-color);
+  border-radius: var(--radius);
+  text-transform: uppercase;
+  min-width: 70px;
+  height: 40px;
+  padding: 0 15px;
+  transition: background-color .3s ease;
+
+  &:hover {
+    background-color: var(--hover);
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
+
+.secondary_color {
+  color: var(--text-color);
+  background-color: var(--secondary-color);
+
+  &:hover {
+    background-color: var(--secondary-hover);
+  }
+}
+
+.full_width {
+  width: 100%;
+}
+
+.loader {
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-bottom-color: #fff;
+  width: 25px;
+  height: 25px;
+  margin: 0 auto;
+  animation: animationLoader .5s linear infinite;
+}
+
+@keyframes animationLoader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,28 @@
+.home_outer {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.home_inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 51px);
+}
+
+.title {
+  font-size: 5em;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-transform: uppercase;
+
+  @media (max-width: 768px) {
+    font-size: 3em;
+  }
+
+  @media (max-width: 425px) {
+    font-size: 2em;
+  }
+}

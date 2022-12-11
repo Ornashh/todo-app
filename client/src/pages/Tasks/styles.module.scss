@@ -1,0 +1,90 @@
+.tasks_container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.tasks_content {
+  padding: 20px 0 40px 0;
+}
+
+.tasks_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.date {
+  h2 {
+    font-size: 38px;
+    font-weight: 500;
+    color: var(--primary-color)
+  }
+
+  p {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--label-color);
+  }
+}
+
+.completed_task {
+  button {
+    font-size: 14px;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    height: 35px;
+    margin-bottom: 10px;
+
+    svg {
+      fill: var(--text-color);
+      width: 25px;
+      height: 100%;
+      transition: transform .15s linear;
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+  }
+}
+
+.completed_active {
+  svg {
+    transform: rotate(90deg);
+  }
+}
+
+.show_completed {
+  animation: showCompletedAnimation .15s linear;
+}
+
+@keyframes showCompletedAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hide_completed {
+  animation: hideCompletedAnimation .15s linear;
+}
+
+@keyframes hideCompletedAnimation {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+}

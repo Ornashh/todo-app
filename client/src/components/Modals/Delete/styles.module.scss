@@ -1,0 +1,32 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 50px;
+  height: 100%;
+  padding: 15px;
+
+  @media (max-width: 768px) {
+    gap: 0;
+  }
+}
+
+.text {
+  font-size: 22px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+
+  @media (max-width: 768px) {
+    font-size: 28px;
+  }
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
