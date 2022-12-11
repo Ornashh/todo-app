@@ -8,11 +8,11 @@ import "../../assets/styles/auth.scss";
 
 import { useAppContext } from "../../context";
 import { signUp } from "../../api";
-import PageLayout from "../../components/PageLayout";
 import TextField from "../../ui/Textfield";
 import Button from "../../ui/Button";
 import Settings from "../../utils/Settings";
 import { signUpSchemas } from "../../utils/Schemas";
+import PageTitle from "../../utils/PageTitle";
 
 const initialState = {
   first_name: "",
@@ -47,7 +47,7 @@ const SignUp = () => {
     });
 
   return (
-    <PageLayout title="Sign up">
+    <PageTitle title="Sign up">
       <div className="auth_outer">
         <div className="auth_inner">
           <h1 className="auth_title">{t("Auth.Sign up v2")}</h1>
@@ -102,7 +102,7 @@ const SignUp = () => {
           </div>
         </div>
       </div>
-    </PageLayout>
+    </PageTitle>
   );
 };
 

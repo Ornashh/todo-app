@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 
-import s from "./button.module.scss";
+import s from "./styles.module.scss";
 
 const Loading = () => <div className={s.loader} />;
 

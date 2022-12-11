@@ -1,4 +1,4 @@
-import s from "./loader.module.scss";
+import s from "./styles.module.scss";
 
 const Loader = ({ loading, children }) => {
   if (loading) {

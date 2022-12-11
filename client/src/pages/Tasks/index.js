@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import s from "./tasks.module.scss";
+import s from "./styles.module.scss";
 
 import { useAppContext } from "../../context";
 import { getTasks } from "../../api";
-import PageLayout from "../../components/PageLayout";
 import Form from "../../components/Form";
 import Task from "../../components/Task";
 import Loader from "../../ui/Loader";
 import Icon from "../../ui/Icon";
 import RenderIf from "../../utils/RenderIf";
+import PageTitle from "../../utils/PageTitle";
 
 const Tasks = () => {
   const { t } = useTranslation();
@@ -56,7 +56,7 @@ const Tasks = () => {
   };
 
   return (
-    <PageLayout title="Tasks">
+    <PageTitle title="Tasks">
       <div className={s.tasks_container}>
         <div className={s.tasks_content}>
           <div className={s.tasks_header}>
@@ -70,17 +70,21 @@ const Tasks = () => {
 
           <Loader loading={isLoading}>
             <RenderIf isTrue={uncompletedTasks.length}>
-              <div style={{ marginBottom: "15px" }}>
+              <div
+                style={completedTasks.length > 0 ? { marginBottom: 15 } : null}
+              >
                 {uncompletedTasks?.map((task) => (
-                  <Task key={task._id} {...task} setTasks={setTasks} />
+                  <Task
+                    key={task._id}
+                    {...task}
+                    task={task}
+                    setTasks={setTasks}
+                  />
                 ))}
               </div>
             </RenderIf>
             <RenderIf isTrue={completedTasks.length > 0}>
-              <div
-                className={s.completed_task}
-                style={{ marginBottom: isCompleted ? "10px" : "0" }}
-              >
+              <div className={s.completed_task}>
                 <button
                   onClick={handleToggle}
                   className={isCompleted ? s.completed_active : ""}
@@ -104,7 +108,7 @@ const Tasks = () => {
           </Loader>
         </div>
       </div>
-    </PageLayout>
+    </PageTitle>
   );
 };
 

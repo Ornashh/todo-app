@@ -19,17 +19,21 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+
         <Route
           path="/sign_up"
           element={isAuth ? <Navigate to="/tasks" /> : <SignUp />}
         />
+
         <Route
           path="/sign_in"
           element={isAuth ? <Navigate to="/tasks" /> : <SignIn />}
         />
+
         <Route element={<PrivateRoute />}>
           <Route path="/tasks" element={<Tasks />} />
         </Route>
+
         <Route path="*" element={<NotFound />} />
       </Routes>
       <ToastContainer limit={3} />

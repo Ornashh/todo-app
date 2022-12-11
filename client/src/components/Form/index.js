@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 
-import s from "./form.module.scss";
+import s from "./styles.module.scss";
 
 import { useAppContext } from "../../context";
 import { createTask } from "../../api";

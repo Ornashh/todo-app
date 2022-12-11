@@ -1,19 +1,19 @@
 import React, { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 
-import s from "./modal.module.scss";
+import s from "./styles.module.scss";
 
 import { useAppContext } from "../../context";
 import Icon from "../../ui/Icon";
 import useClickAway from "../../hooks/useClickAway";
 import Portal from "../../utils/Portal";
-import DeleteModal from "../../components/Modals/DeleteModal";
-import EditModal from "../../components/Modals/EditModal";
+import Delete from "../../components/Modals/Delete";
+import Edit from "../../components/Modals/Edit";
 import RenderIf from "../../utils/RenderIf";
 
 const Modals = {
-  deleteModal: <DeleteModal />,
-  editModal: <EditModal />,
+  deleteModal: <Delete />,
+  editModal: <Edit />,
 };
 
 const Modal = () => {
@@ -48,8 +48,13 @@ const Modal = () => {
     <Portal>
       <div className={s.modal_outer}>
         <div ref={modal} className={clsx(s.modal_inner, animation)}>
-          <div className={s.modal_header}>
-            <div className={s.modal_title}>{modalProps.title}</div>
+          <div
+            className={s.modal_header}
+            style={!modalProps.title ? { justifyContent: "flex-end" } : null}
+          >
+            <RenderIf isTrue={modalProps.title}>
+              <div className={s.modal_title}>{modalProps.title}</div>
+            </RenderIf>
             <button onClick={handleClose}>
               <Icon name="close" />
             </button>

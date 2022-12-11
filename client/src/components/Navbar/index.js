@@ -2,16 +2,18 @@ import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-import s from "./navbar.module.scss";
+import s from "./styles.module.scss";
 
 import { useAppContext } from "../../context";
 import Icon from "../../ui/Icon";
 import Dropdown from "../../ui/Dropdown";
+import RenderIf from "../../utils/RenderIf";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
-  const { isAuth, theme, handleTheme, lang, handleLang } = useAppContext();
+  const { isAuth, theme, handleTheme, lang, handleLang, openModal } =
+    useAppContext();
 
   useEffect(() => {
     i18n.changeLanguage(lang);
@@ -53,7 +55,7 @@ const Navbar = () => {
                 <Icon name={theme === "dark" ? "dark" : "light"} />
               </button>
             </div>
-            {isAuth ? (
+            <RenderIf isTrue={isAuth}>
               <Dropdown icon="user">
                 <button onClick={handleTasks}>
                   <Icon name="tasks" />
@@ -64,11 +66,12 @@ const Navbar = () => {
                   <div>{t("Auth.Sign out")}</div>
                 </button>
               </Dropdown>
-            ) : (
+            </RenderIf>
+            <RenderIf isTrue={!isAuth}>
               <Link to="sign_in" className={s.sign_in_link}>
                 {t("Auth.Sign in")}
               </Link>
-            )}
+            </RenderIf>
           </div>
         </div>
       </div>

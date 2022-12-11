@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import clsx from "clsx";
 import { useTranslation } from "react-i18next";
 
-import s from "./task.module.scss";
+import s from "./styles.module.scss";
 
 import { useAppContext } from "../../context";
 import { updateTask } from "../../api";
@@ -10,7 +10,7 @@ import Icon from "../../ui/Icon";
 import Dropdown from "../../ui/Dropdown";
 import RenderIf from "../../utils/RenderIf";
 
-const Task = ({ _id, title, desc, isCompleted, setTasks }) => {
+const Task = ({ _id, title, desc, isCompleted, task, setTasks }) => {
   const { t } = useTranslation();
   const { openModal } = useAppContext();
   const [isLoading, setIsLoading] = useState(false);

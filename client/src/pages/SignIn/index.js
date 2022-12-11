@@ -8,11 +8,11 @@ import "../../assets/styles/auth.scss";
 
 import { useAppContext } from "../../context";
 import { signIn } from "../../api";
-import PageLayout from "../../components/PageLayout";
 import TextField from "../../ui/Textfield";
 import Button from "../../ui/Button";
 import { signInSchemas } from "../../utils/Schemas";
 import Settings from "../../utils/Settings";
+import PageTitle from "../../utils/PageTitle";
 
 const SignIn = () => {
   const { t } = useTranslation();
@@ -42,7 +42,7 @@ const SignIn = () => {
     });
 
   return (
-    <PageLayout title="Sign in">
+    <PageTitle title="Sign in">
       <div className="auth_outer">
         <div className="auth_inner">
           <h1 className="auth_title">{t("Auth.Sign in")}</h1>
@@ -82,7 +82,7 @@ const SignIn = () => {
           </div>
         </div>
       </div>
-    </PageLayout>
+    </PageTitle>
   );
 };
 

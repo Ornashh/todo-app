@@ -21,6 +21,10 @@ const resources = {
         Username: "Username",
         Password: "Password",
       },
+      Mode: {
+        Dark: "Dark",
+        Light: "Light",
+      },
       Task: {
         Add: "Add task",
         Edit: "Edit",
@@ -62,6 +66,10 @@ const resources = {
         "Last name": "Фамилия",
         Username: "Имя пользователя",
         Password: "Пароль",
+      },
+      Mode: {
+        Dark: "Темный",
+        Light: "Светлый",
       },
       Task: {
         Add: "Добавить задачу",

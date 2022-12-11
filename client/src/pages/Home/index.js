@@ -1,17 +1,20 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-import s from "./home.module.scss";
+import s from "./styles.module.scss";
+import PageTitle from "../../utils/PageTitle";
 
 const Home = () => {
   const { t } = useTranslation();
 
   return (
-    <div className={s.home_outer}>
-      <div className={s.home_inner}>
-        <h1 className={s.title}>{t("Main title")}</h1>
+    <PageTitle title="Home">
+      <div className={s.home_outer}>
+        <div className={s.home_inner}>
+          <h1 className={s.title}>{t("Main title")}</h1>
+        </div>
       </div>
-    </div>
+    </PageTitle>
   );
 };
 

@@ -82,6 +82,8 @@ input {
 
 button {
   font-family: inherit;
+  font-size: inherit;
+  color: inherit;
   outline: none;
   border: none;
   background: none;
@@ -110,7 +112,7 @@ button {
     transform: scale(0.9);
   }
   50% {
-    transform: scale(1.05);
+    transform: scale(1.03);
   }
   100% {
     transform: scale(1);
