@@ -11,7 +11,7 @@ import { ReactComponent as Menu } from "@material-design-icons/svg/filled/menu.s
 import { ReactComponent as User } from "@material-design-icons/svg/filled/account_circle.svg";
 import { ReactComponent as Login } from "@material-design-icons/svg/filled/login.svg";
 import { ReactComponent as Logout } from "@material-design-icons/svg/filled/logout.svg";
-import { ReactComponent as Notes } from "@material-design-icons/svg/filled/notes.svg";
+import { ReactComponent as Tasks } from "@material-design-icons/svg/filled/checklist.svg";
 import { ReactComponent as Dark } from "@material-design-icons/svg/outlined/dark_mode.svg";
 import { ReactComponent as Light } from "@material-design-icons/svg/outlined/light_mode.svg";
 import { ReactComponent as Language } from "@material-design-icons/svg/outlined/language.svg";
@@ -30,7 +30,7 @@ const List = {
   user: <User />,
   login: <Login />,
   logout: <Logout />,
-  tasks: <Notes />,
+  tasks: <Tasks />,
   dark: <Dark />,
   light: <Light />,
   language: <Language />,

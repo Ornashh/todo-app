@@ -5,6 +5,7 @@
 }
 
 .tasks_content {
+  min-height: calc(100vh - 51px);
   padding: 20px 0 40px 0;
 }
 
@@ -19,7 +20,7 @@
   h2 {
     font-size: 38px;
     font-weight: 500;
-    color: var(--primary-color)
+    color: var(--text-color)
   }
 
   p {
