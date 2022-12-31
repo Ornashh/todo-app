@@ -2,7 +2,7 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 
 import s from "./styles.module.scss";
-import PageTitle from "../../utils/PageTitle";
+import PageTitle from "../../utils/pageTitle";
 
 const NotFound = () => {
   const { t } = useTranslation();

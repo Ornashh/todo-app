@@ -10,9 +10,9 @@ import { useAppContext } from "../../context";
 import { signUp } from "../../api";
 import TextField from "../../ui/Textfield";
 import Button from "../../ui/Button";
-import Settings from "../../utils/Settings";
-import { signUpSchemas } from "../../utils/Schemas";
-import PageTitle from "../../utils/PageTitle";
+import Settings from "../../utils/settings";
+import { signUpSchemas } from "../../utils/schemas";
+import PageTitle from "../../utils/pageTitle";
 
 const initialState = {
   first_name: "",

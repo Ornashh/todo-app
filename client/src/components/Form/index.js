@@ -7,7 +7,7 @@ import s from "./styles.module.scss";
 import { useAppContext } from "../../context";
 import { createTask } from "../../api";
 import Icon from "../../ui/Icon";
-import Settings from "../../utils/Settings";
+import Settings from "../../utils/settings";
 
 const Form = ({ setTasks }) => {
   const { t } = useTranslation();
@@ -16,7 +16,7 @@ const Form = ({ setTasks }) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
-    setState({ [e.target.name]: e.target.value });
+    setState({...state, ...{[e.target.name]: e.target.value }});
   };
 
   const handleAddTask = (e) => {

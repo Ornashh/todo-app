@@ -9,8 +9,8 @@ import Form from "../../components/Form";
 import Task from "../../components/Task";
 import Loader from "../../ui/Loader";
 import Icon from "../../ui/Icon";
-import RenderIf from "../../utils/RenderIf";
-import PageTitle from "../../utils/PageTitle";
+import RenderIf from "../../utils/renderIf";
+import PageTitle from "../../utils/pageTitle";
 
 const Tasks = () => {
   const { t } = useTranslation();

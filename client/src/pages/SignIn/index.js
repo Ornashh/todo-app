@@ -10,9 +10,9 @@ import { useAppContext } from "../../context";
 import { signIn } from "../../api";
 import TextField from "../../ui/Textfield";
 import Button from "../../ui/Button";
-import { signInSchemas } from "../../utils/Schemas";
-import Settings from "../../utils/Settings";
-import PageTitle from "../../utils/PageTitle";
+import { signInSchemas } from "../../utils/schemas";
+import Settings from "../../utils/settings";
+import PageTitle from "../../utils/pageTitle";
 
 const SignIn = () => {
   const { t } = useTranslation();

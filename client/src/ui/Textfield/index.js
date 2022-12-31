@@ -1,7 +1,7 @@
 import React from "react";
 
 import s from "./styles.module.scss";
-import RenderIf from "../../utils/RenderIf";
+import RenderIf from "../../utils/renderIf";
 
 const TextField = (props) => {
   const {

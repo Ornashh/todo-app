@@ -7,7 +7,7 @@ import s from "./styles.module.scss";
 import { useAppContext } from "../../../context";
 import { deleteTask } from "../../../api";
 import Button from "../../../ui/Button";
-import Settings from "../../../utils/Settings";
+import Settings from "../../../utils/settings";
 
 const Delete = () => {
   const { t } = useTranslation();

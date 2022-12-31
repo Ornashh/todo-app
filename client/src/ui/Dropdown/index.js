@@ -4,7 +4,7 @@ import s from "./styles.module.scss";
 
 import Icon from "../../ui/Icon";
 import useClickAway from "../../hooks/useClickAway";
-import RenderIf from "../../utils/RenderIf";
+import RenderIf from "../../utils/renderIf";
 import clsx from "clsx";
 
 const Dropdown = ({ icon, primaryColor, children }) => {

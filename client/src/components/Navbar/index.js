@@ -7,12 +7,12 @@ import s from "./styles.module.scss";
 import { useAppContext } from "../../context";
 import Icon from "../../ui/Icon";
 import Dropdown from "../../ui/Dropdown";
-import RenderIf from "../../utils/RenderIf";
+import RenderIf from "../../utils/renderIf";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
-  const { isAuth, theme, handleTheme, lang, handleLang, openModal } =
+  const { isAuth, theme, handleTheme, lang, handleLang } =
     useAppContext();
 
   useEffect(() => {

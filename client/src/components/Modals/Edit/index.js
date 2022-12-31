@@ -9,7 +9,7 @@ import { useAppContext } from "../../../context";
 import { updateTask } from "../../../api";
 import Button from "../../../ui/Button";
 import TextField from "../../../ui/Textfield";
-import Settings from "../../../utils/Settings";
+import Settings from "../../../utils/settings";
 
 const Edit = () => {
   const { t } = useTranslation();

@@ -8,9 +8,9 @@ import { useAppContext } from "../../context";
 import { updateTask } from "../../api";
 import Icon from "../../ui/Icon";
 import Dropdown from "../../ui/Dropdown";
-import RenderIf from "../../utils/RenderIf";
+import RenderIf from "../../utils/renderIf";
 
-const Task = ({ _id, title, desc, isCompleted, task, setTasks }) => {
+const Task = ({ _id, title, desc, isCompleted, setTasks }) => {
   const { t } = useTranslation();
   const { openModal } = useAppContext();
   const [isLoading, setIsLoading] = useState(false);
