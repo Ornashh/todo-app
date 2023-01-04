@@ -11,6 +11,7 @@ import Loader from "../../ui/Loader";
 import Icon from "../../ui/Icon";
 import RenderIf from "../../utils/renderIf";
 import PageTitle from "../../utils/pageTitle";
+import { dateFormat } from "../../utils/helpers";
 
 const Tasks = () => {
   const { t } = useTranslation();
@@ -22,18 +23,6 @@ const Tasks = () => {
 
   const uncompletedTasks = tasks.filter((task) => task.isCompleted === false);
   const completedTasks = tasks.filter((task) => task.isCompleted === true);
-
-  const options = {
-    weekday: "long",
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  };
-
-  const currentDate = new Date().toLocaleDateString(
-    lang === "en" ? "en-GB" : "ru-RU",
-    options
-  );
 
   useEffect(() => {
     setIsLoading(true);
@@ -62,7 +51,7 @@ const Tasks = () => {
           <div className={s.tasks_header}>
             <div className={s.date}>
               <h2>{t("Date")}</h2>
-              <p>{currentDate}</p>
+              <p>{dateFormat(lang === "en" ? "en-GB" : "ru-RU")}</p>
             </div>
           </div>
 
@@ -74,12 +63,7 @@ const Tasks = () => {
                 style={completedTasks.length > 0 ? { marginBottom: 15 } : null}
               >
                 {uncompletedTasks?.map((task) => (
-                  <Task
-                    key={task._id}
-                    {...task}
-                    task={task}
-                    setTasks={setTasks}
-                  />
+                  <Task key={task._id} {...task} setTasks={setTasks} />
                 ))}
               </div>
             </RenderIf>

@@ -10,10 +10,11 @@ import { updateTask } from "../../../api";
 import Button from "../../../ui/Button";
 import TextField from "../../../ui/Textfield";
 import Settings from "../../../utils/settings";
+import { dateFormat } from "../../../utils/helpers";
 
 const Edit = () => {
   const { t } = useTranslation();
-  const { modalProps, closeModal, theme } = useAppContext();
+  const { modalProps, closeModal, lang, theme } = useAppContext();
   const { data } = modalProps;
 
   const [updateState, setUpdateState] = useState({
@@ -58,6 +59,12 @@ const Edit = () => {
 
   return (
     <form className={s.form} onSubmit={handleSubmit}>
+      <TextField
+        label={t("Modal.Date")}
+        value={dateFormat(lang === "en" ? "en-GB" : "ru-RU", data?.date)}
+        handleChange={handleChange}
+        disabled
+      />
       <TextField
         name="title"
         label={t("Modal.Title")}

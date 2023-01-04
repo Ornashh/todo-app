@@ -10,7 +10,7 @@ import Icon from "../../ui/Icon";
 import Dropdown from "../../ui/Dropdown";
 import RenderIf from "../../utils/renderIf";
 
-const Task = ({ _id, title, desc, isCompleted, setTasks }) => {
+const Task = ({ _id, date, title, desc, isCompleted, setTasks }) => {
   const { t } = useTranslation();
   const { openModal } = useAppContext();
   const [isLoading, setIsLoading] = useState(false);
@@ -19,7 +19,13 @@ const Task = ({ _id, title, desc, isCompleted, setTasks }) => {
     openModal({
       title: t("Modal.Modal title edit"),
       type: "editModal",
-      data: { _id: _id, title: title, desc: desc || "", setTasks: setTasks },
+      data: {
+        _id: _id,
+        date: date,
+        title: title,
+        desc: desc || "",
+        setTasks: setTasks,
+      },
     });
   };
 
